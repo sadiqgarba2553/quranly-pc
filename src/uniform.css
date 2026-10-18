@@ -1,0 +1,22 @@
+/* Original colors and backgrounds are defined in index.css and the theme settings. */
+:root { --font-ui: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif; --on-accent: #fff; --accent-surface: var(--glass-bg-hover); }
+[data-theme="dark"] { --on-accent: #000; }
+button, input, select, textarea { font-family: var(--font-ui); }
+body { font-family: var(--font-ui), sans-serif; }
+[data-theme="light"] body, [data-theme="light"] .app-container.player-mode { background: linear-gradient(to bottom,#dbe8ff 0%,#f2f2f7 32%); }
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+.reciter-avatar-img { filter: none; }
+button:disabled { cursor: default; }
+.free-app-note { display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 12px; }
+.free-app-note strong { font-size: 14px; font-weight: 600; }
+.free-app-note p { font-size: 12px; margin-top: 5px; line-height: 1.6; }
+.spotify-pro-badge, .lb-pro-tag { display: none; }
+.audio-range { accent-color: var(--accent-color); }
+.compact-transport .compact-play { background: var(--text-primary); color: var(--bg-color); }
+@media (min-width:850px) {
+  .player-mode > .page-content { padding-bottom: 140px; }
+  .player-mode .top-header .app-brand { visibility: hidden; }
+  .desktop-brand { padding-bottom: 18px; }
+  .desktop-nav-heading { padding-top: 13px; }
+  .desktop-nav-link { min-height: 36px; padding-top: 8px; padding-bottom: 8px; }
+}

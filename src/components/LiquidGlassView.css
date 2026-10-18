@@ -1,0 +1,38 @@
+.liquid-glass-container {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.liquid-glass-specular-edge { display: none; }
+
+.liquid-glass-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
+  width: 100%;
+  gap: inherit;
+}
+
+/* Legacy alias */
+.liquid-glass-view {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.liquid-glass-view::before,
+.liquid-glass-view::after {
+  display: none;
+}

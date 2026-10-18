@@ -1,0 +1,400 @@
+.quran-overlay {
+  align-items: flex-end;
+}
+
+.quran-modal {
+  background: #13131a;
+  border-radius: 24px 24px 0 0;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUpModal 0.35s cubic-bezier(0.2,0.8,0.2,1) forwards;
+}
+
+@keyframes slideUpModal {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.quran-modal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(19, 19, 26, 0.95);
+  flex-shrink: 0;
+}
+
+.quran-modal-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quran-modal-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.quran-arabic-title {
+  font-size: 22px;
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  color: var(--accent-color);
+  direction: rtl;
+  line-height: 1.2;
+}
+
+.quran-modal-title h3 {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 500;
+}
+
+.close-quran-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.quran-modal-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lang-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 10px;
+  border-radius: 14px;
+  max-width: 50%;
+}
+
+.translation-select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.translation-select option {
+  background: #111111;
+  color: var(--text-primary);
+}
+
+.sync-control-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.live-sync-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.16s var(--ease-out), color 0.16s var(--ease-out);
+}
+
+.live-sync-pill.active {
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--accent-color);
+}
+
+.nudge-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 6px;
+}
+
+.nudge-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nudge-btn:hover {
+  background: rgba(99, 102, 241, 0.3);
+  color: var(--text-primary);
+}
+
+.nudge-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-color);
+  min-width: 26px;
+  text-align: center;
+}
+
+.bismillah {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  color: var(--text-secondary);
+  padding: 16px 24px;
+  direction: rtl;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-radius: 16px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.bismillah.active-bismillah {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--text-primary);
+  text-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.quran-ayahs {
+  overflow-y: auto;
+  padding: 16px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quran-ayahs::-webkit-scrollbar { width: 4px; }
+.quran-ayahs::-webkit-scrollbar-track { background: transparent; }
+.quran-ayahs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+.quran-loading,
+.quran-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+@keyframes pulseDot {
+  0% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.pulse-icon {
+  animation: pulseDot 1.5s infinite ease-in-out;
+  color: var(--accent-color);
+}
+
+.ayah-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.ayah-block:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ayah-block.active-ayah {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+}
+
+.ayah-block.active-ayah .ayah-arabic {
+  color: var(--text-primary);
+  text-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+}
+
+.ayah-block.active-ayah .ayah-english {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+.active-play-icon {
+  margin-right: 6px;
+  color: var(--accent-color);
+  display: inline;
+  vertical-align: middle;
+}
+
+.ayah-arabic {
+  font-size: 22px;
+  line-height: 1.9;
+  direction: rtl;
+  text-align: right;
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  color: var(--text-primary);
+}
+
+.ayah-num {
+  font-size: 16px;
+  color: var(--accent-color);
+  margin-left: 8px;
+}
+
+.quran-error span {
+  font-size: 14px;
+}
+
+/* Tafsir Styles */
+.ayah-actions {
+  margin-top: 12px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.view-tafsir-btn {
+  background: var(--card-bg-hover, rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.16s var(--ease-out), color 0.16s var(--ease-out);
+}
+
+.view-tafsir-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.view-tafsir-btn.active {
+  background: var(--accent-primary, #6366f1);
+  color: var(--text-primary);
+  border-color: transparent;
+}
+
+.ayah-tafsir.glass-panel {
+  margin-top: 15px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  animation: slideDownFade 0.3s ease-out forwards;
+}
+
+.tafsir-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tafsir-header strong {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tafsir-content {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.tafsir-content p {
+  margin-bottom: 10px;
+}
+
+.tafsir-loader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  padding: 10px 0;
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ayah-english {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--accent-color);
+  font-style: italic;
+}
+
+/* Bookmark button on each ayah */
+.ayah-bookmark-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.25);
+  padding: 4px;
+  margin-right: 4px;
+  border-radius: 6px;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.ayah-bookmark-btn:hover {
+  color: var(--accent-color);
+}
+
+.ayah-bookmark-btn.bookmarked {
+  color: var(--accent-color);
+}
+
+[data-theme="light"] .ayah-bookmark-btn {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .ayah-bookmark-btn.bookmarked {
+  color: var(--accent-color);
+}
+
+
+

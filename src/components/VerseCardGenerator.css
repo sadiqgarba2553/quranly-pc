@@ -1,0 +1,195 @@
+/* ── VerseCardGenerator Component Styles ───────────────────── */
+.verse-card-generator-modal {
+  width: 92%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--mushaf-bg, #0f172a);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+  animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.generator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--mushaf-border);
+  padding-bottom: 12px;
+}
+
+.generator-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.generator-preview-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  max-height: 230px;
+  overflow: hidden;
+}
+
+.card-preview-box {
+  border: 2px solid var(--mushaf-gold, #f59e0b);
+  border-radius: 50% 50% 12px 12px / 25% 25% 12px 12px; /* Simulates an arch */
+  padding: 24px 16px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.2);
+  transition: background 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+  max-height: 200px;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Simulate geometric background */
+.card-preview-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%, rgba(255,255,255,0.03)),
+                    linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%, rgba(255,255,255,0.03));
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-preview-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+.preview-watermark {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.preview-arabic-text {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  direction: rtl;
+  margin: 4px 0;
+}
+
+.preview-trans-text {
+  font-size: 10px;
+  font-style: italic;
+  line-height: 1.3;
+  opacity: 0.9;
+  max-width: 90%;
+}
+
+.preview-ref-badge {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.generator-options-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.ratio-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.option-pill {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.16s var(--ease-out), color 0.16s var(--ease-out), border-color 0.16s var(--ease-out);
+}
+
+.option-pill.active {
+  background: var(--text-primary) !important;
+  color: var(--bg-color) !important;
+  border-color: var(--text-primary) !important;
+  font-weight: 700;
+}
+
+.palette-pills {
+  display: flex;
+  gap: 10px;
+}
+
+.palette-chip {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.palette-chip.active {
+  border-color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.generator-actions {
+  padding-top: 12px;
+  border-top: 1px solid var(--mushaf-border);
+}
+
+.download-card-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-primary) !important;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.download-card-btn:hover {
+  background: var(--glass-bg-hover) !important;
+  transform: translateY(-1px);
+}

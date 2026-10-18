@@ -1,0 +1,35 @@
+/* Desktop composition follows the reading order and keeps controls within reach. */
+.desktop-sidebar { display: none; }
+:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 4px; }
+.desktop-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 20px; }
+.desktop-tools button { border: 1px solid var(--glass-border); border-radius: 10px; padding: 10px 14px; background: var(--card-bg); }
+.desktop-tools p { width: 100%; font-size: 13px; color: var(--text-secondary); }
+@media (min-width: 850px) {
+  :root { --sidebar-width: 230px; }
+  .player-mode > .page-content > * { animation: none; }
+  .app-container.player-mode { display: block; width: 100%; max-width: none; border: 0; }
+  .desktop-sidebar { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; width: var(--sidebar-width); background: var(--card-bg); border-right: 1px solid var(--glass-border); padding: 26px 14px 18px; z-index: 105; }
+  .desktop-brand { display: flex; align-items: center; gap: 12px; padding: 0 10px 28px; color: var(--text-primary); text-decoration: none; font-size: 23px; font-weight: 750; letter-spacing: -.7px; }
+  .desktop-brand img { width: 38px; height: 38px; border-radius: 11px; }
+  .desktop-brand small { display: block; color: var(--text-secondary); font-size: 10px; font-weight: 500; letter-spacing: .1px; margin-top: 4px; }
+  .desktop-nav-scroll { flex: 1; overflow-y: auto; }
+  .desktop-nav-heading { padding: 18px 12px 9px; font-size: 11px; font-weight: 650; color: var(--text-secondary); letter-spacing: .04em; }
+  .desktop-nav-link { display: flex; align-items: center; gap: 12px; min-height: 38px; padding: 9px 12px; margin-bottom: 3px; border-radius: 9px; color: var(--text-secondary); text-decoration: none; font-size: 13px; font-weight: 550; transition: background 120ms var(--ease-out), color 120ms var(--ease-out), transform 120ms var(--ease-out); }
+  .desktop-nav-link.active { background: var(--glass-bg-hover); color: var(--text-primary); }
+  .desktop-nav-link:active { transform: scale(.98); }
+  .desktop-nav-link kbd { margin-left: auto; font: 9px system-ui; opacity: .6; }
+  .desktop-sidebar-footer p { display: flex; align-items: center; gap: 6px; padding: 10px; font-size: 11px; }
+  .player-mode > .page-content { margin-left: var(--sidebar-width); height: 100dvh; padding: 32px clamp(24px, 4vw, 68px) 110px; scrollbar-gutter: stable; }
+  .player-mode .bottom-nav { display: none; }
+  .player-mode > .mini-player { left: calc(var(--sidebar-width) + 24px); right: 24px; bottom: 18px; max-width: none; width: auto; margin: 0; min-height: 68px; }
+  .player-mode .home-page, .player-mode .settings-page { width: 100%; max-width: 1160px; margin: 0 auto; }
+  .player-mode .features-2x2-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); overflow: visible; }
+  .player-mode .home-page > .top-header { padding-bottom: 12px; }
+  .player-mode .mushaf-page { min-height: auto; }
+  .player-mode .mushaf-toolbar { position: sticky; top: 0; }
+  .player-mode .surah-list, .player-mode .reciters-grid { scrollbar-gutter: stable; }
+  ::-webkit-scrollbar { display: block; width: 7px; height: 7px; }
+  ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 8px; }
+}
+@media (hover: hover) and (pointer: fine) { .desktop-nav-link:hover { color: var(--text-primary); background: var(--glass-bg-hover); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }

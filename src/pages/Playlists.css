@@ -1,0 +1,1700 @@
+.playlists-page {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  padding-bottom: 24px;
+
+}
+
+
+
+.playlists-page-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 24px;
+
+}
+
+
+
+.playlists-page-header h1 {
+
+  margin: 0;
+
+  font-size: 28px;
+
+  font-weight: 800;
+
+  color: var(--text-primary);
+
+}
+
+
+
+.create-playlist-btn {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 16px;
+
+  border-radius: 20px;
+
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+
+  color: var(--text-primary);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: transform 0.16s var(--ease-out), background 0.2s ease, border-color 0.2s ease;
+
+  box-shadow: none;
+
+}
+
+
+
+.create-playlist-btn:hover {
+
+  background: var(--glass-bg-hover);
+
+  transform: scale(1.03);
+
+}
+
+
+
+/* Made For You Mixes */
+
+.section-mood-mixes {
+
+  margin-bottom: 24px;
+
+}
+
+
+
+.section-mood-mixes .section-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 12px;
+
+}
+
+
+
+.mood-badge-top {
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: var(--text-secondary);
+
+}
+
+
+
+.mood-mixes-scroll {
+
+  display: flex;
+
+  flex-direction: row;
+
+  gap: 10px;
+
+  overflow-x: auto;
+
+  padding: 4px 0 10px 0;
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+
+  -webkit-overflow-scrolling: touch;
+
+}
+
+
+
+.mood-mixes-scroll::-webkit-scrollbar {
+
+  display: none;
+
+}
+
+
+
+.mood-mix-card {
+
+  display: inline-flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: var(--card-bg) !important;
+
+  border: 1px solid var(--glass-border) !important;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  white-space: nowrap;
+
+  box-shadow: none;
+
+  height: auto;
+
+  min-width: 0;
+
+  max-width: none;
+
+  transition: background 0.16s var(--ease-out), transform 0.16s var(--ease-out);
+
+}
+
+
+
+.mood-mix-card:hover {
+
+  background: var(--card-bg-hover) !important;
+
+}
+
+
+
+.mood-mix-card:active {
+
+  transform: scale(0.98);
+
+}
+
+
+
+.mood-mix-header {
+
+  display: none;
+
+}
+
+
+
+.mood-mix-content {
+
+  margin-bottom: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  flex: 1;
+
+}
+
+
+
+.mood-mix-title {
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: var(--text-primary);
+
+  margin: 0;
+
+  white-space: nowrap;
+
+}
+
+
+
+.mood-mix-subtitle {
+
+  display: none;
+
+}
+
+
+
+.mood-mix-footer {
+
+  display: flex;
+
+  align-items: center;
+
+  padding-top: 0;
+
+  border-top: none;
+
+}
+
+
+
+.mood-mix-reciter {
+
+  display: none;
+
+}
+
+
+
+.mood-mix-play-btn {
+
+  width: 32px;
+
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: var(--card-bg-hover);
+
+  border: 1px solid var(--glass-border);
+
+  color: var(--text-primary);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-shadow: none;
+
+  cursor: pointer;
+
+  transition: transform 0.16s var(--ease-out);
+
+}
+
+
+
+.mood-mix-play-btn:active {
+
+  transform: scale(0.95);
+
+}
+
+
+
+.playlists-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 14px;
+
+}
+
+
+
+.playlist-card {
+
+  min-height: 120px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 16px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background: var(--card-bg);
+
+  border: 1px solid var(--glass-border);
+
+  backdrop-filter: none;
+
+  -webkit-backdrop-filter: none;
+
+  transition: background 0.16s var(--ease-out), transform 0.16s var(--ease-out);
+
+  box-shadow: none;
+
+}
+
+
+
+.playlist-card:hover {
+
+  background: var(--card-bg-hover);
+
+}
+
+
+
+.playlist-card:active {
+
+  transform: scale(0.97);
+
+}
+
+
+
+.playlist-icon-badge {
+
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 12px;
+
+  background: var(--card-bg-hover);
+
+  border: 1px solid var(--glass-border);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: var(--text-primary);
+
+  margin-bottom: 12px;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.playlist-card-info {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+}
+
+
+
+.playlist-card-info h3 {
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: var(--text-primary);
+
+  margin: 0;
+
+  line-height: 1.3;
+
+}
+
+
+
+.playlist-count {
+
+  font-size: 11px;
+
+  color: var(--text-secondary);
+
+  margin: 0;
+
+  display: block;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+
+
+.delete-playlist-corner {
+
+  position: absolute;
+
+  top: 10px;
+
+  right: 10px;
+
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+
+  color: var(--text-primary);
+
+  border-radius: 50%;
+
+  width: 28px;
+
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition: transform 0.16s var(--ease-out), background 0.2s ease;
+
+  box-shadow: none;
+
+}
+
+
+
+.delete-playlist-corner:hover {
+
+  transform: scale(1.08);
+
+}
+
+
+
+/* ── Followed Qaris / Reciters Section ── */
+
+.section-header-qaris {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 32px;
+
+  margin-bottom: 14px;
+
+}
+
+
+
+.section-header-qaris h2 {
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  color: var(--text-primary);
+
+  margin: 0;
+
+}
+
+
+
+.qaris-count {
+
+  font-size: 13px;
+
+  color: var(--text-secondary);
+
+}
+
+
+
+.empty-qaris-banner {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 16px 20px;
+
+  border-radius: 18px;
+
+  background: var(--glass-bg);
+
+  border: 1px dashed var(--glass-border);
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+}
+
+
+
+.followed-qaris-grid {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+}
+
+
+
+.qari-card {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 12px 16px;
+
+  border-radius: 18px;
+
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+
+  cursor: pointer;
+
+  transition: transform 0.16s var(--ease-out), background 0.2s ease, border-color 0.2s ease;
+
+}
+
+
+
+.qari-card:hover {
+
+  background: var(--glass-bg-hover);
+
+  border-color: var(--glass-border);
+
+  transform: translateY(-1px);
+
+}
+
+
+
+.qari-avatar-wrap {
+
+  width: 46px;
+
+  height: 46px;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  border: 1px solid var(--glass-border);
+
+  flex-shrink: 0;
+
+}
+
+
+
+.qari-avatar-wrap img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+
+
+.qari-info {
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+}
+
+
+
+.qari-info h4 {
+
+  margin: 0;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  color: var(--text-primary);
+
+}
+
+
+
+.qari-info p {
+
+  margin: 0;
+
+  font-size: 12px;
+
+  color: var(--text-secondary);
+
+}
+
+
+
+.qari-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+
+
+.qari-unfollow-btn {
+
+  width: 34px;
+
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+
+  color: var(--text-primary);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: none;
+
+  transition: transform 0.16s var(--ease-out), background 0.2s ease;
+
+}
+
+
+
+.qari-unfollow-btn:hover {
+
+  background: var(--glass-bg-hover);
+
+  transform: scale(1.05);
+
+}
+
+
+
+.qari-play-btn {
+
+  width: 36px;
+
+  height: 36px;
+
+  border-radius: 50%;
+
+  background: var(--text-primary) !important;
+
+  color: var(--bg-color) !important;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: none;
+
+  transition: transform 0.16s var(--ease-out), opacity 0.16s var(--ease-out);
+
+}
+
+
+
+.qari-play-btn svg {
+
+  color: var(--bg-color) !important;
+
+  fill: var(--bg-color) !important;
+
+}
+
+
+
+.qari-play-btn:active {
+
+  transform: scale(0.95);
+
+}
+
+
+
+/* ── Detailed Playlist View (Clean & Spotify-like) ── */
+
+.playlists-page.detail-view {
+
+  display: flex;
+
+  flex-direction: column;
+
+  height: 100%;
+
+}
+
+
+
+.playlist-header {
+
+  position: relative;
+
+  padding: 32px 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  min-height: 180px;
+
+  border-radius: 24px;
+
+  margin-bottom: 24px;
+
+  overflow: hidden;
+
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+
+}
+
+
+
+.back-btn {
+
+  position: absolute;
+
+  top: 16px;
+
+  left: 16px;
+
+  z-index: 10;
+
+  background: var(--glass-bg) !important;
+
+  border: 1px solid var(--glass-border) !important;
+
+  color: var(--text-primary) !important;
+
+  box-shadow: none;
+
+}
+
+
+
+.header-actions-right {
+
+  position: absolute;
+
+  bottom: 20px;
+
+  right: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  z-index: 10;
+
+}
+
+
+
+.add-surah-btn {
+
+  width: 44px;
+
+  height: 44px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: none;
+
+}
+
+
+
+.play-all-btn {
+
+  width: 52px;
+
+  height: 52px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  color: var(--text-primary);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-shadow: none;
+
+  backdrop-filter: none;
+
+  transition: transform 0.2s, background 0.2s;
+
+}
+
+
+
+.play-all-btn:hover {
+
+  background: rgba(255, 255, 255, 0.3);
+
+  transform: scale(1.06);
+
+}
+
+
+
+.playlist-surahs {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  padding-bottom: 40px;
+
+}
+
+
+
+/* FIX TEXT OVERLAP IN SURAH ROW */
+
+.playlist-surah-row {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 12px 16px;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+
+  transition: background 0.2s, border-color 0.2s;
+
+}
+
+
+
+.playlist-surah-row:hover {
+
+  background: var(--glass-bg-hover);
+
+  border-color: var(--glass-border);
+
+}
+
+
+
+.playlist-surah-row.active {
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: rgba(255, 255, 255, 0.3);
+
+}
+
+
+
+.playlist-surah-row.active .surah-number {
+
+  background: var(--text-primary);
+
+  color: var(--bg-color);
+
+  font-weight: 800;
+
+}
+
+
+
+.playlist-surah-row.active .surah-info h4 {
+
+  color: var(--text-primary);
+
+}
+
+
+
+.surah-number {
+
+  min-width: 28px;
+
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: var(--text-secondary);
+
+  flex-shrink: 0;
+
+  margin: 0;
+
+}
+
+
+
+.surah-info {
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+  min-width: 0;
+
+}
+
+
+
+.surah-info h4 {
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  color: var(--text-primary);
+
+  margin: 0;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+
+
+.surah-info p {
+
+  font-size: 12px;
+
+  color: var(--text-secondary);
+
+  margin: 0;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+
+
+.surah-more-btn {
+
+  padding: 8px;
+
+  background: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: var(--text-secondary);
+
+  opacity: 0.8;
+
+  flex-shrink: 0;
+
+  box-shadow: none;
+
+}
+
+
+
+.surah-more-btn:hover {
+
+  opacity: 1;
+
+}
+
+
+
+.empty-playlist-box {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  color: var(--text-secondary);
+
+}
+
+
+
+.add-surahs-action-btn {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 10px 18px;
+
+  border-radius: 16px;
+
+  background: #3b82f6; color: var(--text-primary);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: none;
+
+}
+
+
+
+/* Modals */
+
+.modal-overlay {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  backdrop-filter: none;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 1000;
+
+  padding: 24px;
+
+}
+
+
+
+.create-playlist-modal {
+
+  width: 100%;
+
+  max-width: 380px;
+
+  background: var(--modal-bg, rgba(15, 23, 42, 0.96));
+
+  border: 1px solid var(--glass-border);
+
+  border-radius: 24px;
+
+  padding: 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+}
+
+
+
+.cp-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+}
+
+
+
+.cp-header h3 {
+
+  margin: 0;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  color: var(--text-primary);
+
+}
+
+
+
+.create-playlist-modal input {
+
+  width: 100%;
+
+  padding: 12px 16px;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid var(--glass-border);
+
+  color: var(--text-primary);
+
+  font-size: 14px;
+
+  outline: none;
+
+}
+
+
+
+.cp-submit-btn {
+
+  width: 100%;
+
+  padding: 12px;
+
+  border-radius: 14px;
+
+  background: #3b82f6; color: var(--text-primary);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: none;
+
+}
+
+
+
+.surah-picker-modal {
+
+  width: 100%;
+
+  max-width: 420px;
+
+  max-height: 80vh;
+
+  background: var(--modal-bg, rgba(15, 23, 42, 0.96));
+
+  border: 1px solid var(--glass-border);
+
+  border-radius: 24px;
+
+  padding: 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+}
+
+
+
+.picker-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+}
+
+
+
+.picker-header h3 {
+
+  margin: 0;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  color: var(--text-primary);
+
+}
+
+
+
+.surah-picker-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  overflow-y: auto;
+
+  max-height: 400px;
+
+}
+
+
+
+.picker-row {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 10px 14px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  cursor: pointer;
+
+  transition: background 0.2s;
+
+}
+
+
+
+.picker-row:hover {
+
+  background: rgba(255, 255, 255, 0.08);
+
+}
+
+
+
+.picker-row.added {
+
+  background: rgba(16, 185, 129, 0.12);
+
+  border: 1px solid rgba(16, 185, 129, 0.25);
+
+}
+
+
+
+.picker-num {
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: var(--text-secondary);
+
+  width: 24px;
+
+}
+
+
+
+.picker-info {
+
+  flex: 1;
+
+}
+
+
+
+.picker-info h5 {
+
+  margin: 0;
+
+  font-size: 14px;
+
+  color: var(--text-primary);
+
+}
+
+
+
+.picker-info p {
+
+  margin: 0;
+
+  font-size: 12px;
+
+  color: var(--text-secondary);
+
+}
+
+
+
+/* ── Followed Qaris / Reciters Section ── */
+
+.section-header-qaris {
+
+  margin-top: 32px;
+
+  margin-bottom: 14px;
+
+}
+
+
+
+.section-header-qaris h2 {
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  color: var(--text-primary, #ffffff);
+
+  margin: 0 0 2px 0;
+
+}
+
+
+
+.qaris-count {
+
+  font-size: 12px;
+
+  color: var(--accent-color);
+
+}
+
+
+
+.empty-qaris-banner {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 16px;
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: var(--accent-color);
+
+  font-size: 13px;
+
+}
+
+
+
+.followed-qaris-grid {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+}
+
+
+
+.qari-card {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 12px 16px;
+
+  border-radius: 18px;
+
+  background: var(--glass-bg, rgba(255, 255, 255, 0.04));
+
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+
+}
+
+
+
+.qari-card:hover {
+
+  background: var(--glass-bg-hover, rgba(255, 255, 255, 0.08));
+
+  transform: translateY(-2px);
+
+}
+
+
+
+.qari-avatar-wrap {
+
+  width: 48px;
+
+  height: 48px;
+
+  min-width: 48px;
+
+  min-height: 48px;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  border: 2px solid rgba(255, 255, 255, 0.3);
+
+  flex-shrink: 0;
+
+}
+
+
+
+.qari-avatar-wrap img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+}
+
+
+
+.qari-info {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+
+.qari-info h4 {
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: var(--text-primary, #ffffff);
+
+  margin: 0 0 2px 0;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+
+
+.qari-info p {
+
+  font-size: 12px;
+
+  color: var(--accent-color);
+
+  margin: 0;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+
+
+.qari-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.qari-unfollow-btn, .qari-play-btn {
+
+  width: 34px;
+
+  height: 34px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+
+}
+
+
+
+.qari-unfollow-btn {
+
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+
+  color: var(--text-primary);
+
+}
+
+
+
+.qari-play-btn {
+
+  background: var(--accent-gradient, #3b82f6); color: var(--text-primary);
+
+}
+
+
+.playlist-rename-form{display:flex;align-items:center;gap:8px}.playlist-rename-form input{min-width:80px;max-width:300px}.playlist-empty-state{display:flex;flex-direction:column;align-items:center;gap:14px;padding:48px 20px;text-align:center}.playlist-empty-state button{padding:11px 18px;background:var(--text-primary);color:var(--bg-color);border-radius:9px}.play-all-btn:disabled{opacity:.4}

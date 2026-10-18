@@ -1,0 +1,21 @@
+.mini-player { position: fixed; bottom: 14px; left: 14px; right: 14px; z-index: 102; background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px 16px; display: grid; grid-template-columns: minmax(0,1fr) 126px; align-items: center; gap: 16px; color: var(--text-primary); }
+.compact-track { display: flex; gap: 12px; align-items: center; min-width: 0; text-align: left; }
+.compact-avatar { width: 44px; height: 44px; flex-shrink: 0; border-radius: 7px; overflow: hidden; border: 1px solid var(--glass-border); }
+.compact-track-text { display: grid; gap: 5px; min-width: 0; }
+.compact-track-text strong { font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.compact-track-text small { color: var(--text-secondary); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.compact-center { display: grid; gap: 5px; }
+.compact-transport { display: flex; justify-content: center; align-items: center; gap: 18px; }
+.compact-transport button { display: grid; place-items: center; width: 30px; height: 30px; color: var(--text-secondary); }
+.compact-transport .compact-play { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-color); color: var(--on-accent); }
+.compact-timeline { display: none; grid-template-columns: 33px minmax(70px,1fr) 33px; gap: 9px; align-items: center; }
+.compact-timeline span { color: var(--text-secondary); font-size: 10px; font-variant-numeric: tabular-nums; }
+.compact-timeline span:last-child { text-align: right; }
+.compact-timeline input { height: 12px; }
+.compact-right { display: none; align-items: center; justify-content: flex-end; gap: 16px; }
+.compact-volume { display: flex; align-items: center; gap: 8px; width: 110px; color: var(--text-secondary); }
+.compact-volume input { min-width: 0; }
+.compact-expand { display: grid; place-items: center; width: 30px; height: 30px; }
+@media (max-width:849px) { .mini-player { bottom: 90px; max-width: 720px; margin: 0 auto; } }
+@media (min-width:850px) { .player-mode > .mini-player { left: calc(var(--sidebar-width) + 20px); right: 20px; bottom: 16px; max-width: none; margin: 0; min-height: 88px; grid-template-columns: minmax(140px,1fr) minmax(180px,1.5fr) minmax(110px,1fr); } .compact-timeline { display: grid; } .compact-right { display: flex; } }
+@media (min-width:850px) and (max-width:1050px) { .compact-volume { width: 75px; } .mini-player { gap: 10px; padding-left: 12px; padding-right: 12px; } .compact-avatar { display: none; } }

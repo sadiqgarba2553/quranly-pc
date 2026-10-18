@@ -1,0 +1,1084 @@
+/* ==========================================================================
+   Quranly Landing Page — Flat Gold/Cream/Ink Refined Aesthetic
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #141414;
+  --surface: #1D1C1A;
+  --surface-hover: #262421;
+  --gold: #C9A24B;
+  --gold-hover: #B8923D;
+  --cream: #EDE8DC;
+  --muted: #8A8783;
+  --hairline: rgba(138, 135, 131, 0.2);
+  --hairline-gold: rgba(201, 162, 75, 0.4);
+}
+
+.quranly-landing {
+  background-color: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-ui);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+.ql-container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --------------------------------------------------------------------------
+   Typography Tokens
+   -------------------------------------------------------------------------- */
+.ql-hero-title,
+.ql-section-title,
+.ql-showcase-title,
+.ql-download-heading,
+.ql-final-cta-heading {
+  font-family: var(--font-ui);
+  color: var(--cream);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.ql-eyebrow-tag,
+.ql-eyebrow-label,
+.ql-section-subtitle {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Top Navigation Bar (Flat, Clean)
+   -------------------------------------------------------------------------- */
+.ql-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--ink);
+  border-bottom: 1px solid var(--hairline);
+  padding: 14px 0;
+}
+
+.ql-nav-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ql-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.ql-nav-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid var(--hairline);
+}
+
+.ql-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ql-brand-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ql-brand-name {
+  font-family: var(--font-ui);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.ql-brand-star {
+  color: var(--gold);
+}
+
+.ql-brand-badge {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ql-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ql-nav-links a {
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.ql-nav-links a:hover {
+  color: var(--cream);
+}
+
+.ql-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ql-nav-bluecloud-link {
+  color: var(--muted);
+  font-size: 0.84rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.ql-nav-bluecloud-link:hover {
+  color: var(--cream);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons (Flat, Solid, No Gradients, No Glows)
+   -------------------------------------------------------------------------- */
+.ql-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--gold);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+
+.ql-btn-gold:hover {
+  background-color: var(--gold-hover);
+  border-color: var(--gold-hover);
+  color: var(--ink);
+}
+
+.ql-btn-gold:active {
+  transform: scale(0.98);
+}
+
+.ql-btn-surface {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--surface);
+  color: var(--cream);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+
+.ql-btn-surface:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--hairline-gold);
+  color: var(--cream);
+}
+
+.ql-btn-surface:active {
+  transform: scale(0.98);
+}
+
+.ql-btn-lg {
+  padding: 12px 24px;
+  font-size: 0.95rem;
+}
+
+.ql-btn-md {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
+.ql-nav-launch-btn {
+  padding: 7px 16px;
+  font-size: 0.84rem;
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section
+   -------------------------------------------------------------------------- */
+.ql-hero {
+  padding: 56px 0 64px 0;
+  background-color: var(--ink);
+}
+
+.ql-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.ql-eyebrow-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 5px 12px;
+  border-radius: 6px;
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.ql-eyebrow-star {
+  color: var(--gold);
+}
+
+.ql-hero-title {
+  font-size: 2.85rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.18;
+  margin-bottom: 20px;
+}
+
+.ql-hero-subtitle {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 32px;
+  max-width: 540px;
+}
+
+.ql-hero-cta-group {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Stats Bar (Flat, Hairline Separated)
+   -------------------------------------------------------------------------- */
+.ql-stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.ql-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ql-stat-num {
+  font-family: var(--font-ui);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.ql-stat-label {
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.ql-stat-divider {
+  width: 1px;
+  height: 28px;
+  background-color: var(--hairline);
+}
+
+/* Hero Showcase Graphic Box */
+.ql-hero-visual-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.ql-hero-image-box {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background-color: var(--surface);
+}
+
+.ql-hero-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Restrained Decorative Motif Divider
+   -------------------------------------------------------------------------- */
+.ql-divider-motif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+
+.ql-motif-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--hairline);
+}
+
+.ql-motif-star {
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   Section Common Headers
+   -------------------------------------------------------------------------- */
+.ql-section {
+  padding: 68px 0;
+  background-color: var(--ink);
+}
+
+.ql-section-header {
+  margin-bottom: 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.ql-section-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.ql-section-desc {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Instant Audio Sampler Section (Flat Reciter Cards, Fixed Image Layout)
+   -------------------------------------------------------------------------- */
+.ql-sampler-section {
+  background-color: var(--surface);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.ql-samples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.ql-sample-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--ink);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ql-sample-card:hover {
+  border-color: var(--hairline-gold);
+  background-color: var(--surface-hover);
+}
+
+.ql-sample-card.ql-sample-active {
+  border-color: var(--gold);
+  background-color: var(--surface-hover);
+}
+
+.ql-sample-avatar-box {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--hairline-gold);
+  background-color: var(--surface);
+}
+
+.ql-sample-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ql-sample-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.95rem;
+  background-color: var(--surface);
+}
+
+.ql-sample-play-trigger {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(20, 20, 20, 0.45);
+  border: none;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.ql-sample-play-trigger:hover,
+.ql-sample-play-trigger.playing {
+  background-color: var(--gold);
+  color: var(--ink);
+}
+
+.ql-sample-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.ql-sample-location {
+  font-size: 0.68rem;
+  color: var(--gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.ql-sample-name {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ql-sample-surah-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ql-sample-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ql-sample-time {
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.ql-wave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 12px;
+}
+
+.ql-wave-bars span {
+  width: 2.5px;
+  background-color: var(--gold);
+  border-radius: 1px;
+  animation: waveMotion 0.8s ease-in-out infinite alternate;
+}
+
+.ql-wave-bars span:nth-child(1) { height: 35%; animation-delay: 0.1s; }
+.ql-wave-bars span:nth-child(2) { height: 95%; animation-delay: 0.3s; }
+.ql-wave-bars span:nth-child(3) { height: 55%; animation-delay: 0.2s; }
+.ql-wave-bars span:nth-child(4) { height: 100%; animation-delay: 0.4s; }
+
+@keyframes waveMotion {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+.ql-sampler-action-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Core Features Grid (Flat Cards)
+   -------------------------------------------------------------------------- */
+.ql-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 20px;
+}
+
+.ql-feature-card {
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ql-feature-card:hover {
+  border-color: var(--hairline-gold);
+  background-color: var(--surface-hover);
+}
+
+.ql-feature-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background-color: var(--ink);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border: 1px solid var(--hairline);
+}
+
+.ql-feature-card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.ql-feature-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.ql-feature-tag {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  background-color: var(--ink);
+  border: 1px solid var(--hairline);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.ql-tag-gold {
+  color: var(--gold);
+  border-color: var(--hairline-gold);
+}
+
+/* --------------------------------------------------------------------------
+   Reciter Showcase Grid
+   -------------------------------------------------------------------------- */
+.ql-reciters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.ql-reciter-card {
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ql-reciter-card:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--hairline-gold);
+}
+
+.ql-reciter-avatar-wrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 12px auto;
+  overflow: hidden;
+  border: 1px solid var(--hairline-gold);
+  background-color: var(--ink);
+}
+
+.ql-reciter-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ql-reciter-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.ql-reciter-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.ql-reciter-card:hover .ql-reciter-hover-overlay {
+  opacity: 0.92;
+}
+
+.ql-reciter-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+
+.ql-reciter-role {
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.ql-reciter-tag {
+  font-size: 0.68rem;
+  color: var(--gold);
+  font-weight: 600;
+  background-color: var(--ink);
+  border: 1px solid var(--hairline);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   AI Tafsir & Study Feature
+   -------------------------------------------------------------------------- */
+.ql-showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.ql-showcase-visual {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background-color: var(--surface);
+}
+
+.ql-showcase-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ql-showcase-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.ql-showcase-desc {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.ql-showcase-points {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.ql-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+.ql-point-icon {
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ql-point-heading {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile App & Download Section (Flat Panel)
+   -------------------------------------------------------------------------- */
+.ql-download-panel {
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 44px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.ql-download-heading {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.ql-download-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.ql-download-btn-group {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.ql-btn-sub {
+  display: block;
+  font-size: 0.68rem;
+  opacity: 0.85;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.ql-btn-title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.ql-download-meta-specs {
+  display: flex;
+  gap: 16px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+.ql-pwa-instruction-card {
+  background-color: var(--ink);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.ql-pwa-heading {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 14px;
+}
+
+.ql-pwa-ordered-list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.ql-pwa-ordered-list strong {
+  color: var(--gold);
+}
+
+/* --------------------------------------------------------------------------
+   FAQ Accordion (Flat Hairline List)
+   -------------------------------------------------------------------------- */
+.ql-faq-stack {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ql-faq-row {
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ql-faq-row:hover {
+  border-color: var(--hairline-gold);
+}
+
+.ql-faq-row.open {
+  border-color: var(--gold);
+}
+
+.ql-faq-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--cream);
+  gap: 16px;
+}
+
+.ql-faq-arrow {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.ql-faq-body {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   Final CTA Banner
+   -------------------------------------------------------------------------- */
+.ql-final-cta-panel {
+  background-color: var(--surface);
+  border: 1px solid var(--hairline-gold);
+  border-radius: 16px;
+  padding: 56px 24px;
+}
+
+.ql-final-star {
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.ql-final-cta-heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.ql-final-cta-text {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ql-final-cta-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Footer (Flat, Clean)
+   -------------------------------------------------------------------------- */
+.ql-footer {
+  background-color: var(--ink);
+  border-top: 1px solid var(--hairline);
+  padding: 52px 0 28px 0;
+}
+
+.ql-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 2fr;
+  gap: 44px;
+  margin-bottom: 40px;
+}
+
+.ql-footer-bio {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 14px;
+  max-width: 340px;
+  line-height: 1.6;
+}
+
+.ql-footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.ql-footer-link-group h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 14px;
+}
+
+.ql-footer-link-group a,
+.ql-footer-btn-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  margin-bottom: 9px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-ui);
+  transition: color 0.15s ease;
+}
+
+.ql-footer-link-group a:hover,
+.ql-footer-btn-link:hover {
+  color: var(--gold);
+}
+
+.ql-footer-bottom-row {
+  border-top: 1px solid var(--hairline);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.ql-footer-bottom-row a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .ql-hero-grid,
+  .ql-showcase-grid,
+  .ql-download-panel,
+  .ql-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ql-nav-links {
+    display: none;
+  }
+
+  .ql-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .ql-download-panel {
+    padding: 32px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ql-hero {
+    padding: 36px 0 48px 0;
+  }
+
+  .ql-hero-title {
+    font-size: 1.85rem;
+  }
+
+  .ql-stats-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .ql-stat-divider {
+    display: none;
+  }
+
+  .ql-footer-columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Quranly</title>
+  <meta name="description" content="Privacy Policy for Quranly — Your digital Quran companion application." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg-color: #030305;
+      --nav-bg: rgba(20, 20, 25, 0.7);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-bg-hover: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --text-primary: #ffffff;
+      --text-secondary: #9ca3af;
+      --accent-color: #3b82f6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      background-image: radial-gradient(circle at 50% -20%, rgba(30, 27, 75, 0.8), transparent 60%);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Outer centering shell (mimics .app-container) ── */
+    .app-shell {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-color);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    /* ── Sticky header bar ── */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 24px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .logo-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .top-bar-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    /* ── Page scroll area ── */
+    .page-content {
+      flex: 1;
+      padding: 32px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ── Page heading ── */
+    .page-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .page-heading h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .page-heading .subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ── App hero / logo block ── */
+    .app-hero {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .hero-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+      flex-shrink: 0;
+    }
+
+    .hero-text h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: -0.3px;
+    }
+
+    .hero-text p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* ── Glass panel ── */
+    .glass-panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-color);
+      margin-bottom: 14px;
+    }
+
+    /* ── Body text ── */
+    .body-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .body-text + .body-text {
+      margin-top: 16px;
+    }
+
+    /* ── Highlight pill ── */
+    .highlight {
+      display: inline;
+      background: rgba(59, 130, 246, 0.12);
+      color: #93c5fd;
+      padding: 1px 6px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--glass-border);
+      margin: 20px 0;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 24px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-color);
+    }
+
+    .contact-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .contact-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-color);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      padding: 13px 20px;
+      border-radius: 14px;
+      transition: opacity 0.2s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .email-btn:active {
+      opacity: 0.85;
+      transform: scale(0.97);
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      text-align: center;
+      padding: 0 0 20px;
+    }
+
+    .page-footer p {
+      font-size: 12px;
+      color: rgba(156, 163, 175, 0.5);
+    }
+
+    /* ── Scrollbar hidden ── */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Sticky top bar -->
+  <header class="top-bar">
+    <img src="logo.png" alt="Quranly Logo" class="logo-img" onerror="this.style.display='none'" />
+    <span class="top-bar-title">Quranly</span>
+  </header>
+
+  <!-- Page content -->
+  <main class="page-content">
+
+    <!-- Heading -->
+    <div class="page-heading">
+      <h1>Privacy Policy</h1>
+      <p class="subtitle">Last updated: August 11, 2026</p>
+    </div>
+
+    <!-- App hero block -->
+    <div class="app-hero">
+      <img src="logo.png" alt="Quranly" class="hero-logo" onerror="this.style.display='none'" />
+      <div class="hero-text">
+        <h2>Quranly</h2>
+        <p>Your digital Quran companion — built for personal spiritual growth and Islamic education.</p>
+      </div>
+    </div>
+
+    <!-- About the App -->
+    <div class="glass-panel">
+      <p class="section-label">About the App</p>
+      <p class="body-text">
+        Quranly is a digital Quran companion application designed to help Muslims and learners of the Quran engage with the Holy Quran in a meaningful and accessible way. The app provides users with access to the full text of the Quran in Arabic, along with translations in multiple languages, audio recitations by renowned Qaris, tafsir (Quranic commentary), and tools for bookmarking, tracking reading progress, and setting daily recitation goals.
+      </p>
+    </div>
+
+    <!-- How we use data -->
+    <div class="glass-panel">
+      <p class="section-label">Your Data</p>
+      <p class="body-text">
+        Quranly is built for personal use and spiritual growth. Depending on how you use the app, we may store
+        <span class="highlight">reading preferences</span>,
+        <span class="highlight">bookmarks</span>,
+        <span class="highlight">playlists</span>,
+        <span class="highlight">listening progress</span>,
+        <span class="highlight">azkar counters</span>, and
+        <span class="highlight">account profile details</span>
+        to personalize your experience and sync across devices when you sign in.
+      </p>
+      <div class="divider"></div>
+      <p class="body-text">
+        Quranly does <strong>not</strong> sell personal data for advertising or marketing purposes.
+      </p>
+    </div>
+
+    <!-- Third-party APIs -->
+    <div class="glass-panel">
+      <p class="section-label">Third-Party Services</p>
+      <p class="body-text">
+        To deliver core features, Quranly may communicate with third-party services, including:
+      </p>
+      <p class="body-text">
+        <span class="highlight">Firebase</span> (Google) for authentication and optional cloud sync;
+        <span class="highlight">MP3Quran</span> / Quran audio providers for recitations and radio;
+        <span class="highlight">AlQuran Cloud</span> and <span class="highlight">Quran.com</span> for Quran text, tafsir, and search;
+        <span class="highlight">AlAdhan</span> for prayer times and Qibla;
+        <span class="highlight">HadithAPI</span> for hadith collections; and
+        <span class="highlight">Google Gemini</span> when you use Ask AI (requires your own API key or configured key).
+      </p>
+      <div class="divider"></div>
+      <p class="body-text">
+        Those providers process requests according to their own privacy policies. You can request account/data deletion by contacting us.
+      </p>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-card">
+      <span class="label">Contact Us</span>
+      <h3>Request Data Deletion</h3>
+      <p>If you'd like to request deletion of your data or have any privacy-related questions, reach out to us directly.</p>
+      <a href="mailto:sadiqgarbaibrahimadeel@gmail.com" class="email-btn" id="privacy-contact-btn">
+        ✉&#xFE0E;&nbsp; sadiqgarbaibrahimadeel@gmail.com
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="page-footer">
+      <p>&copy; 2026 Quranly &nbsp;·&nbsp; Built with love for the Ummah</p>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

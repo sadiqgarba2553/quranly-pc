@@ -1,0 +1,248 @@
+====================================================================
+             QURANLY - COMPLETE QARI RECITER LIST (241 Qaris)
+====================================================================
+
+ID     | QARI NAME                                     | INITIAL
+--------------------------------------------------------------------
+1      | Ibrahim Al-Akdar                              | I
+10     | Akram Alalaqmi                                | A
+100    | Majed Al-Enezi                                | M
+102    | Maher Al Meaqli                               | M
+104    | Mohammad Al-Airawy                            | M
+105    | Mohammed Al-Barrak                            | M
+106    | Mohammad Al-Tablaway                          | M
+107    | Mohammed Al-Lohaidan                          | M
+108    | Mohammed Al-Muhasny                           | M
+109    | Mohammed Ayyub                                | M
+11     | Alhusayni Al-Azazi                            | A
+110    | Mohammad Saleh Alim Shah                      | M
+111    | Mohammed Jibreel                              | M
+112    | Mohammed Siddiq Al-Minshawi                   | M
+115    | Mohammad Abdullkarem                          | M
+116    | Mohammad Al-Abdullah                          | M
+118    | Mahmoud Khalil Al-Hussary                     | M
+12     | Idrees Abkr                                   | I
+121    | Mahmoud Ali  Albanna                          | M
+123    | Mishary Alafasi                               | M
+125    | Mustafa Ismail                                | M
+126    | Mustafa Al-Lahoni                             | M
+127    | Mustafa raad Alazawy                          | M
+128    | Muamar (From Indonesia)                       | M
+129    | Muftah Alsaltany                              | M
+13     | Alzain Mohammad Ahmad                         | A
+134    | Mohammad Saayed                               | M
+135    | Abdulrahman Alsuwayid                         | A
+136    | Abdulelah bin Aoun                            | A
+137    | Ahmad Talib bin Humaid                        | A
+138    | Noreen Mohammad Siddiq                        | N
+139    | Majed Al-Zamil                                | M
+14     | Al-Qaria Yassen                               | A
+149    | Maher Shakhashero                             | M
+15     | Alashri Omran                                 | A
+150    | Mohammad AlMonshed                            | M
+151    | Mahmood AlSheimy                              | M
+152    | Yasser Salamah                                | Y
+153    | Akhil Abdulhayy Rawa                          | A
+154    | Ustaz Zamri                                   | U
+159    | Khalid Almohana                               | K
+16     | Aloyoon Al-Koshi                              | A
+160    | Adel Al-Khalbany                              | A
+161    | Mousa Bilal                                   | M
+162    | Hussain Alshaik                               | H
+163    | Hatem Fareed Alwaer                           | H
+164    | Ibrahim Aljormy                               | I
+165    | Mahmood Al rifai                              | M
+166    | Nasser Al obaid                               | N
+167    | Wasel Almethen                                | W
+17     | Tawfeeq As-Sayegh                             | T
+178    | Ibrahim Aldosari                              | I
+18     | Jamal Shaker Abdullah                         | J
+181    | Jamaan Alosaimi                               | J
+183    | Rodziah Abdulrahman                           | R
+184    | Rogayah Sulong                                | R
+185    | Sapinah Mamat                                 | S
+187    | Saidin Abdulrahman                            | S
+188    | Abdulghani Abdullah                           | A
+189    | Abdullah Fahmi                                | A
+19     | Hamad Al Daghriri                             | H
+190    | Muhammad Al-Hafiz                             | M
+191    | Mohammed Hafas Ali                            | M
+192    | Muhammed Khairul Anuar                        | M
+193    | Yousef Bin Noah Ahmad                         | Y
+194    | Jamal Addeen Alzailaie                        | J
+197    | Moeedh Alharthi                               | M
+198    | Mohammad Rashad Alshareef                     | M
+2      | Ibrahim Al-Jebreen                            | I
+20     | Khalid Al-Jileel                              | K
+201    | Ahmed Al-trabulsi                             | A
+202    | Abdullah Al-Kandari                           | A
+203    | Ahmed Amer                                    | A
+204    | Ibrahem Assadan                               | I
+205    | Ahmad Alhuthaifi                              | A
+206    | Mohammed Osman Khan                           | M
+207    | Youssef Edghouch                              | Y
+208    | Addokali Mohammad Alalim                      | A
+209    | Wishear Hayder Arbili                         | W
+21     | Khaled Al-Qahtani                             | K
+211    | Alfateh Alzubair                              | A
+21136  | Abdullah Alqarafi                             | A
+21148  | Abdulbadi Ghailan                             | A
+21181  | Muhammad Burhaji                              | M
+21182  | Yusuf ALaidroos                               | Y
+21183  | Hassan Aldaghriri                             | H
+21184  | Muhammad Al Faqih                             | M
+21186  | Junaid Adam Abdullah                          | J
+21187  | Khalid Alziyadi                               | K
+21188  | Alwaleed Alshamsan                            | A
+21191  | Ibrahim Al-Shahri                             | I
+21193  | Abdul Rahman bin Abdul Razzaq Al Badr         | A
+21196  | Alijon Qori                                   | A
+21197  | Mohammed Al-Zubaidi                           | M
+21199  | Abdelmoujib Benkirane                         | A
+212    | Tareq Abdulgani daawob                        | T
+21201  | Asim Al-Luhaidan                              | A
+21202  | Mahmoud Harfoush                              | M
+216    | Othman Al-Ansary                              | O
+217    | Bandar Balilah                                | B
+218    | Khalid Al-Shoraimy                            | K
+219    | Wadeea Al-Yamani                              | W
+22     | Khalid Abdulkafi                              | K
+221    | Raad Al Kurdi                                 | R
+225    | Abdulrahman Aloosi                            | A
+226    | Khalid Algamdi                                | K
+227    | Ramadan Shakoor                               | R
+228    | Abdulmajeed Al-Arkani                         | A
+229    | Mohammad Khalil Al-Qari                       | M
+23     | Khalid Al-Wehabi                              | K
+230    | Rami Aldeais                                  | R
+231    | Hazza Al-Balushi                              | H
+236    | Abdulrahman Al-Majed                          | A
+237    | Marwan Alakri                                 | M
+24     | Khalifa Altunaiji                             | K
+240    | Salman Alotaibi                               | S
+241    | Mohammad Refat                                | M
+243    | Abdullah Al-Mousa                             | A
+244    | Abdullah Al-Khalaf                            | A
+245    | Mansour Al-Salemi                             | M
+246    | Salah Musali                                  | S
+247    | Khalid Alsharekh                              | K
+248    | Nasser Alosfor                                | N
+25     | Dawood Hamza                                  | D
+250    | Mohammad Albukheet                            | M
+251    | Nasser Almajed                                | N
+252    | Ahmed Al-Swailem                              | A
+253    | Islam Sobhi                                   | I
+254    | Bader Alturki                                 | B
+255    | Hitham Aljadani                               | H
+256    | Ahmad Shaheen                                 | A
+257    | Saad Almqren                                  | S
+259    | Ahmad Al Nufais                               | A
+26     | Rasheed Ifrad                                 | R
+260    | Omar Al Darweez                               | O
+263    | Abdulaziz Alasiri                             | A
+264    | Younes Souilass                               | Y
+265    | Ahmad Deban                                   | A
+267    | Abdullah Kamel                                | A
+268    | Peshawa Qadr Al-Kurdi                         | P
+27     | Rachid Belalya                                | R
+271    | Nathier Almalki                               | N
+272    | Okasha Kameny                                 | O
+273    | Haitham Aldukhain                             | H
+274    | Muhammad Abu Sneina                           | M
+275    | Mohammed Al-Amin Qeniwa                       | M
+277    | Mahmoud Abdul Hakam                           | M
+278    | Ahmad Issa Al Maasaraawi                      | A
+279    | Ibrahim Kshidan                               | I
+28     | Zakaria Hamamah                               | Z
+280    | Hashim Abu Dalal                              | H
+281    | Fouad Alkhamery                               | F
+282    | Sayed Ahmad Hashemi                           | S
+283    | Khalid Mohammadi                              | K
+284    | Mal-Allah Abdulrhman Aljaber                  | M
+285    | Salman Alsadeiq                               | S
+286    | Hasan Saleh                                   | H
+287    | Abdulrahman Alshahhat                         | A
+288    | Issa Omar Sanankoua                           | I
+289    | Haroon Baqai                                  | H
+29     | Abdullah Bukhari                              | A
+290    | Saleh Alquraishi                              | S
+3      | Ibrahim Al-Asiri                              | I
+30     | Saad Al-Ghamdi                                | S
+300    | Saleh Alshamrani                              | S
+301    | Faisal Al-Hajry                               | F
+302    | Anas Alemadi                                  | A
+303    | Abdulmalik Alaskar                            | A
+304    | Abdulkareem Alhazmi                           | A
+305    | Hicham Lharraz                                | H
+306    | Abdullah Al-Mishal                            | A
+307    | Abdelaziz sheim                               | A
+31     | Saud Al-Shuraim                               | S
+32     | Sahl Yassin                                   | S
+33     | Zaki Daghistani                               | Z
+34     | Sami Al-Hasn                                  | S
+35     | Sami Al-Dosari                                | S
+36     | Sayeed Ramadan                                | S
+37     | Shaban Al-Sayiaad                             | S
+38     | Shirazad Taher                                | S
+39     | Saber Abdulhakm                               | S
+4      | Shaik Abu Bakr Al Shatri                      | S
+40     | Saleh Alsahood                                | S
+41     | Saleh Al-Talib                                | S
+42     | Saleh Al-Habdan                               | S
+43     | Salah Albudair                                | S
+44     | Salah Alhashim                                | S
+46     | Slaah Bukhatir                                | S
+47     | Mukhtar Al-Haj                                | M
+48     | Adel Ryyan                                    | A
+49     | Abdelbari Al-Toubayti                         | A
+5      | Ahmad Al-Ajmy                                 | A
+50     | Abdulbari Mohammad                            | A
+51     | Abdulbasit Abdulsamad                         | A
+54     | Abdulrahman Alsudaes                          | A
+55     | Abdul Aziz Al-Ahmad                           | A
+56     | Abdulaziz Az-Zahrani                          | A
+57     | Abdullah Al-Burimi                            | A
+58     | Abdullah Albuajan                             | A
+59     | Abdullah Al-Mattrod                           | A
+6      | Ahmad Al-Hawashi                              | A
+60     | Abdullah Basfer                               | A
+61     | Abdullah Khayyat                              | A
+62     | Abdullah Al-Johany                            | A
+63     | Abdullah Qaulan                               | A
+64     | Abdulrasheed Soufi                            | A
+66     | Abdulmohsin Al-Harthy                         | A
+67     | Abdulmohsen Al-Qasim                          | A
+68     | Abdulmohsin Al-Askar                          | A
+69     | Abdulmohsin Al-Obaikan                        | A
+7      | Ahmad Saud                                    | A
+70     | Abdulhadi Kanakeri                            | A
+71     | Abdulwadood Haneef                            | A
+72     | Abdulwali Al-Arkani                           | A
+73     | Ali Abo-Hashim                                | A
+74     | Ali Alhuthaifi                                | A
+76     | Ali Jaber                                     | A
+77     | Ali Hajjaj Alsouasi                           | A
+78     | Emad Hafez                                    | E
+79     | Abdulaziz Alturki                             | A
+8      | Ahmad Saber                                   | A
+80     | Omar Al-Qazabri                               | O
+81     | Fares Abbad                                   | F
+82     | Fahad Al-Otaibi                               | F
+83     | Fahad Al-Kandari                              | F
+84     | Fawaz Alkabi                                  | F
+85     | Lafi Al-Oni                                   | L
+86     | Nasser Alqatami                               | N
+87     | Nabil Al Rifay                                | N
+88     | Neamah Al-Hassan                              | N
+89     | Hani Arrifai                                  | H
+9      | Ahmad Nauina                                  | A
+90     | Walid Al-Dulaimi                              | W
+91     | Waleed Alnaehi                                | W
+92     | Yasser Al-Dosari                              | Y
+93     | Yasser Al-Qurashi                             | Y
+94     | Yasser Al-Faylakawi                           | Y
+95     | Yasser Al-Mazroyee                            | Y
+96     | Yahya Hawwa                                   | Y
+97     | Yousef Alshoaey                               | Y
+98     | Abdullah Abdal                                | A
+--------------------------------------------------------------------

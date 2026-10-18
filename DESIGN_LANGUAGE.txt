@@ -1,0 +1,96 @@
+===============================================================================
+                       QURANLY APP - DESIGN LANGUAGE SPECIFICATION
+===============================================================================
+
+1. COLOR PALETTE & DESIGN TOKENS (STRICT MONOCHROME BLACK & WHITE)
+-------------------------------------------------------------------------------
+Dark Theme (Default):
+  --bg-color: #000000
+  --bg-gradient: none
+  --nav-bg: #09090b
+  --glass-bg: #121212
+  --glass-bg-hover: #18181b
+  --glass-border: #27272a
+  --text-primary: #ffffff
+  --text-secondary: #a1a1aa
+  --accent-primary: #ffffff
+  --accent-color: #ffffff
+  --accent-hover: #e4e4e7
+  --accent-gradient: none
+  --card-bg: #121212
+  --divider: #27272a
+
+Light Theme:
+  --bg-color: #ffffff
+  --bg-gradient: none
+  --nav-bg: #ffffff
+  --glass-bg: #f4f4f5
+  --glass-bg-hover: #e4e4e7
+  --glass-border: #e4e4e7
+  --text-primary: #000000
+  --text-secondary: #71717a
+  --accent-color: #000000
+  --card-bg: #f4f4f5
+  --divider: #e4e4e7
+
+Theme System:
+  - Unified Black & White High-Contrast Monochrome System
+
+2. TYPOGRAPHY
+-------------------------------------------------------------------------------
+  Primary Font Family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif
+  Quranic Font Family: 'Amiri Quran', 'Scheherazade New', 'Amiri', serif
+  Arabic Text Font: 'Scheherazade New', 'Amiri', serif
+
+  Headers & Titles:
+    - Text: Solid #ffffff (Dark) / #000000 (Light) - NO gradients
+    - Font Weight: 600 / 700
+    - Letter Spacing: Tight (-0.02em)
+
+3. FLAT CARD & SOLID PANELS
+-------------------------------------------------------------------------------
+  Solid Panel (.glass-panel / .solid-panel):
+    - Background: var(--card-bg)
+    - Border: 1px solid var(--glass-border)
+    - Border Radius: 16px
+    - Backdrop Filter: NONE (Zero blurs, Zero glassmorphism)
+    - Box Shadow: NONE (Flat minimal styling)
+    - Transition: background 0.2s ease, border-color 0.2s ease
+
+  Interactive Cards / Items:
+    - Active Tap / Hover: background var(--glass-bg-hover)
+    - Border highlight on active state
+
+4. BUTTONS & INPUT ELEMENTS
+-------------------------------------------------------------------------------
+  Primary Buttons:
+    - Background: var(--accent-color) (#ffffff in Dark / #000000 in Light)
+    - Text: #000000 in Dark / #ffffff in Light (Maximum Contrast)
+    - Border-Radius: 12px - 20px
+    - Padding: 12px 24px
+
+  Inputs (Search, Text):
+    - Background: var(--glass-bg)
+    - Border: 1px solid var(--glass-border)
+    - Border Radius: 12px
+    - Text Color: var(--text-primary)
+    - Focus State: Border color transitions to var(--text-primary)
+
+5. NAVIGATION & OVERLAYS (SPOTIFY-STYLE)
+-------------------------------------------------------------------------------
+  Bottom Navigation Bar:
+    - Fixed bottom with safe-area spacing
+    - Solid background var(--nav-bg) with top border var(--glass-border)
+    - Zero blur glass backdrop filter
+
+  Mini Player & Fullscreen Player:
+    - Mini player: Solid card surface directly above BottomNav
+    - Fullscreen Player: Solid black background, clean album artwork, flat white controls, solid progress bar.
+
+===============================================================================
+                         STRICT UI RULES & DIRECTIVES
+===============================================================================
+- ZERO Glassmorphism elements allowed anywhere.
+- ZERO Gradients allowed anywhere.
+- STRICT Black (#000000), White (#ffffff), and Neutral Grays ONLY.
+===============================================================================

@@ -1,0 +1,185 @@
+.search-page {
+  padding: 20px;
+  padding-bottom: 120px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.search-header {
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+  padding: 16px;
+  margin-bottom: 24px;
+  border-radius: 20px;
+}
+
+.search-header h1 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--text-secondary);
+}
+
+.search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px 14px 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--accent-primary);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.search-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.search-empty-state p {
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+.search-results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.search-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.search-reciter-list,
+.search-surah-list,
+.search-verse-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-reciter-card,
+.search-surah-row,
+.search-verse-card {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.16s var(--ease-out), background 0.2s ease;
+}
+
+.search-reciter-card:hover,
+.search-surah-row:hover,
+.search-verse-card:hover {
+  transform: translateY(-2px);
+  background: var(--card-bg-hover);
+}
+
+.search-reciter-info,
+.search-surah-info {
+  flex: 1;
+}
+
+.search-reciter-info h4,
+.search-surah-info h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.search-reciter-info p,
+.search-surah-info p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.surah-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.search-verse-card {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.verse-key-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: var(--accent-primary);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.verse-text-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  text-align: right;
+  width: 100%;
+}
+
+.verse-text-translation {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.search-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px;
+  color: var(--text-secondary);
+}
+
+.no-results {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+}

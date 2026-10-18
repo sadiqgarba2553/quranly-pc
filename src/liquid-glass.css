@@ -1,0 +1,112 @@
+/* One material system; the app's accent colors and scene backgrounds stay intact. */
+:root {
+  --lg-fill: rgba(255,255,255,.62);
+  --lg-fill-hover: rgba(255,255,255,.76);
+  --lg-raised: rgba(245,248,255,.84);
+  --lg-edge: rgba(255,255,255,.72);
+  --lg-highlight: rgba(255,255,255,.9);
+  --lg-shadow: rgba(29,48,83,.13);
+  --lg-solid: #f4f6fb;
+  --lg-inset: rgba(255,255,255,.36);
+  --lg-filter: blur(24px) saturate(145%);
+  --lg-radius: 20px;
+  --lg-control-radius: 12px;
+}
+[data-theme="dark"], .full-screen-player {
+  --lg-fill: rgba(22,26,35,.56);
+  --lg-fill-hover: rgba(40,46,59,.66);
+  --lg-raised: rgba(22,26,35,.84);
+  --lg-edge: rgba(255,255,255,.16);
+  --lg-highlight: rgba(255,255,255,.2);
+  --lg-shadow: rgba(0,0,0,.26);
+  --lg-solid: #191d26;
+  --lg-inset: rgba(0,0,0,.18);
+}
+
+/* Cards, navigation, chat and playback use the same tint, refraction and edge. */
+body :is(.glass-panel,.solid-panel,.liquid-glass-container,.liquid-glass-view,
+  .mini-player,.desktop-sidebar,.bottom-nav,.api-key-card,.chat-message,.chat-input-wrapper,
+  .free-app-note,.manual-review-bar,.download-item,.storage-info,.radio-card,
+  .badge-popup,.fs-main-controls) {
+  background: linear-gradient(145deg,rgba(255,255,255,.055),transparent 65%),var(--lg-fill) !important;
+  border: 1px solid var(--lg-edge) !important;
+  border-radius: var(--lg-radius) !important;
+  -webkit-backdrop-filter: var(--lg-filter) !important;
+  backdrop-filter: var(--lg-filter) !important;
+  box-shadow: inset 0 1px 0 var(--lg-highlight),0 12px 36px -20px var(--lg-shadow) !important;
+}
+body .desktop-sidebar { border-radius: 0 !important; border-width: 0 1px 0 0 !important; }
+body .fs-main-controls { padding: 24px; }
+
+/* Dialogs use a denser layer of the same material for legibility over busy scenes. */
+body :is(.account-dialog,.sound-modal,.sleep-modal,.playlist-drawer,.surah-picker-modal,
+  .create-playlist-modal,.suggest-modal,.khatm-modal-card,.tadabbur-modal-card,
+  .tajweed-modal-card,.quran-modal,.ayah-modal,.tafsir-modal,.jump-modal,
+  .results-modal,.onboarding-card,.fs-volume-popup-card,.verse-card-generator-modal) {
+  background: linear-gradient(145deg,rgba(255,255,255,.055),transparent 65%),var(--lg-raised) !important;
+  border: 1px solid var(--lg-edge) !important;
+  border-radius: 24px !important;
+  -webkit-backdrop-filter: var(--lg-filter) !important;
+  backdrop-filter: var(--lg-filter) !important;
+  box-shadow: inset 0 1px 0 var(--lg-highlight),0 24px 72px -24px var(--lg-shadow) !important;
+}
+
+/* Smaller controls keep their existing shape and the same optical treatment. */
+body :is(.sound-pill,.fs-header-btn,.desktop-tools button,.theme-option-btn,
+  .ai-mode-bar>div,.ai-starters button,.source-pill,.account-secondary,
+  .fs-speed,.fs-sleep,.fs-repeat-btn,.fs-bottom-bar>button,.fs-volume-wrap>button,.fs-share-wrap>button) {
+  background: linear-gradient(145deg,rgba(255,255,255,.06),transparent),var(--lg-fill) !important;
+  border: 1px solid var(--lg-edge) !important;
+  -webkit-backdrop-filter: var(--lg-filter) !important;
+  backdrop-filter: var(--lg-filter) !important;
+  box-shadow: inset 0 1px 0 var(--lg-highlight) !important;
+}
+body :is(.theme-option-btn,.desktop-tools button,.ai-starters button,.source-pill,.account-secondary) { border-radius: var(--lg-control-radius) !important; }
+body .theme-option-btn.active {
+  background: var(--text-primary) !important;
+  color: var(--bg-color) !important;
+  border-color: transparent !important;
+}
+body .desktop-nav-link.active { background: var(--lg-fill-hover); }
+body :is(.account-form input,.account-form textarea,.api-key-input-group input,
+  .playlist-rename-form input,.create-playlist-modal input,.community-participation input,
+  .suggest-textarea,.surah-picker-modal>input) {
+  background:var(--lg-inset);
+  border:1px solid var(--lg-edge);
+  border-radius:var(--lg-control-radius);
+  color:var(--text-primary);
+}
+body :is(.fs-bottom-bar>button,.fs-volume-wrap>button,.fs-share-wrap>button,.fs-playback-controls>.fs-speed,.fs-repeat-btn) { min-width:36px; min-height:36px; border-radius:12px; display:grid; place-items:center; padding:6px; }
+body .liquid-glass-specular-edge {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg,transparent,var(--lg-highlight),transparent);
+  pointer-events: none;
+}
+@media (hover:hover) and (pointer:fine) {
+  body :is(.theme-option-btn:not(.active),.ai-starters button,.desktop-tools button,.source-pill,.sound-pill):hover { background-color: var(--lg-fill-hover) !important; }
+}
+/* Text and images remain sharp; only the scene behind a surface is blurred. */
+body :is(.liquid-glass-content,.fs-text,.quran-text,.message-text) { filter: none; }
+@media(max-width:600px) { body .fs-main-controls { padding:20px 16px; } }
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+  :root, [data-theme="dark"], .full-screen-player { --lg-fill:var(--lg-solid); --lg-raised:var(--lg-solid); }
+}
+@media(prefers-reduced-transparency:reduce) {
+  :root, [data-theme="dark"], .full-screen-player {
+    --lg-fill:var(--lg-solid);
+    --lg-fill-hover:var(--lg-solid);
+    --lg-raised:var(--lg-solid);
+    --lg-filter:none;
+  }
+  body .liquid-glass-specular-edge { display:none; }
+}
+.cloud-backup-status { display: flex; gap: 10px; align-items: center; margin: 14px 0; font-size: 13px; line-height: 1.5; color: var(--text-primary); }
+.cloud-backup-status small { display: block; color: var(--text-secondary); margin-top: 3px; font-size: 11px; }
+.backup-indicator { width: 7px; height: 7px; border-radius: 50%; background: var(--text-secondary); flex-shrink: 0; }
+.backup-indicator.saved { background: #52b788; }
+.backup-indicator.offline,.backup-indicator.pending { background: #d8ad58; }

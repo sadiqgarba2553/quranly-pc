@@ -1,0 +1,25 @@
+.account-overlay { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; background: rgba(8,15,27,.65); padding: 24px; }
+.account-dialog { position: relative; width: 100%; max-width: 440px; max-height: calc(100dvh - 48px); overflow-y: auto; border: 1px solid var(--glass-border); border-radius: 18px; background: var(--card-bg); padding: 32px; color: var(--text-primary); outline: none; }
+.account-close { position: absolute; top: 15px; right: 15px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 8px; color: var(--text-secondary); }
+.account-symbol { width: 48px; height: 48px; display: grid; place-items: center; background: var(--accent-surface); color: var(--accent-color); border-radius: 12px; margin-bottom: 20px; }
+.account-dialog h2 { font-size: 24px; letter-spacing: -.03em; margin-bottom: 9px; }
+.account-intro { font-size: 13px; line-height: 1.5; margin-bottom: 24px; overflow-wrap: anywhere; }
+.account-form { display: flex; flex-direction: column; gap: 9px; }
+.account-form label { font-size: 12px; font-weight: 600; margin-top: 8px; }
+.account-form input, .account-form textarea { width: 100%; padding: 12px; background: var(--bg-color); border: 1px solid var(--glass-border); border-radius: 8px; font-size: 14px; color: var(--text-primary); }
+.account-form textarea { resize: vertical; font-family: inherit; }
+.account-form small { font-size: 11px; color: var(--text-secondary); }
+.account-primary { display: flex; justify-content: center; align-items: center; gap: 7px; min-height: 43px; background: var(--accent-color); color: var(--on-accent); border-radius: 9px; font-size: 13px; font-weight: 600; margin-top: 14px; }
+.account-primary:disabled, .account-secondary:disabled { opacity: .55; }
+.account-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; margin-top: 21px; }
+.account-links button { color: var(--accent-color); font-size: 12px; padding: 3px; }
+.account-error, .account-message { font-size: 12px; line-height: 1.6; padding: 12px; border: 1px solid var(--glass-border); border-radius: 8px; margin-bottom: 15px; background: var(--bg-color); }
+.account-error { color: var(--text-primary); border-left: 3px solid #dc665f; }
+.account-message { color: var(--text-primary); border-left: 3px solid var(--accent-color); }
+.account-summary { display: flex; justify-content: space-between; gap: 8px; margin: 24px 0; padding: 16px 0; border-block: 1px solid var(--glass-border); }
+.account-summary span { display: grid; gap: 5px; font-size: 10px; color: var(--text-secondary); }
+.account-summary strong { color: var(--text-primary); font-size: 15px; }
+.account-secondary, .account-signout { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; font-size: 13px; border-radius: 8px; }
+.account-secondary { border: 1px solid var(--glass-border); color: var(--accent-color); }
+.account-signout { margin-top: 10px; color: var(--text-secondary); }
+.account-footnote { font-size: 10px; text-align: center; line-height: 1.5; margin-top: 24px; color: var(--text-secondary); }

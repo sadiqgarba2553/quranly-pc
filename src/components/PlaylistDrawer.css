@@ -1,0 +1,122 @@
+.drawer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* It slides down from middle */
+  padding-top: 120px;
+}
+
+.playlist-drawer {
+  background: var(--card-bg, #18181b);
+  border-top: 1px solid var(--glass-border);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  padding: 24px 24px calc(24px + env(safe-area-inset-bottom, 0px)) 24px;
+  display: flex;
+  flex-direction: column;
+  animation: slideUpModal 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.drawer-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.drawer-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.drawer-search {
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  padding-bottom: 40px;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.2s;
+}
+
+.queue-item:active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.queue-item.current {
+  background: var(--card-bg-hover);
+  border: 1px solid var(--text-primary);
+}
+
+.queue-item:last-child {
+  border-bottom: none;
+}
+
+.queue-index {
+  width: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-primary);
+  margin-right: 12px;
+}
+
+.queue-index.highlight {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+.btn-active {
+  background: var(--card-bg-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+.queue-info {
+  flex: 1;
+}
+
+.queue-info h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.queue-info p {
+  font-size: 13px;
+  color: var(--accent-color);
+}
+
+
+

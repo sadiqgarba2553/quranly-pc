@@ -86,3 +86,16 @@ Settings → Your data shows restoring, queued, saving, backed up or retry statu
 Verification includes an offline restart, restoration in a fresh app profile, accurate play counting only after playback begins, and live Supabase backup/restore and ownership checks with disposable accounts. Test accounts were removed.
 
 The Quran reader now has a compact responsive toolbar, a consistent glass reading surface, calmer Arabic spacing, keyboard verse actions, and labelled text-size controls with a reset. Original app and player colours remain.
+
+
+## Reciter collection downloads - 0.1.0-alpha.1
+
+Open Downloads, choose a reciter, or use Download collection on a reciter profile. Select the recording and Original, 128 kbps or 64 kbps MP3. Check storage before starting. The queue includes every surah listed for the selected recording, including all 114 for complete recordings; a partial recording is labelled with its actual available count.
+
+Original keeps the server recording unchanged. Other settings download the original first and convert it locally with bundled FFmpeg; they reduce saved file size when the source bitrate is higher, without improving source quality. Storage checks show source download bytes and free disk space. Missing server sizes are estimated; conversion reserves extra working space, and actual saved size depends on duration.
+
+Collection audio and the queue are stored in the existing Windows app profile under `audio-collections/`, separate from account backup and existing browser-cache downloads. Downloads run sequentially while Quranly is open. Pause keeps completed surahs and the partial current file. Closing/restarting restores unfinished queues paused: choose Resume to continue. Servers supporting Range and a file validator resume from saved bytes; other servers safely restart the current file. Network failures retry three times and leave a recoverable queue. Remove collection removes that collection's audio and partial files while retaining other downloads and user progress.
+
+Completed surahs appear in Downloads and play without a network connection, including seeking. Collections work without an account; no new backend is used. Engine attribution and source references are in AUDIO-ENGINE-NOTICES.md and bundled alongside FFmpeg.
+
+`npm test` covers complete 114-surah queues, storage estimates, restart/range recovery, safe server fallback, retry preservation and real 64/128 kbps conversion. `npx playwright test tests/collections.spec.js` covers controls, pause/restart/resume and offline playback. Set `QURANLY_PACKAGED=1` to test the packaged executable after building.

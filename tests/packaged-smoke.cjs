@@ -9,7 +9,7 @@ const os = require('node:os');
   const app = await _electron.launch({ executablePath: path.resolve('release/win-unpacked/Quranly.exe'), args:[`--user-data-dir=${profile}`], env });
   try {
     assert.equal(await app.evaluate(({app}) => app.isPackaged),true);
-    assert.equal(await app.evaluate(({app}) => app.getVersion()),'0.1.0-alpha');
+    assert.equal(await app.evaluate(({app}) => app.getVersion()),require('../package.json').version);
     assert.equal(await app.evaluate(({app}) => app.getPath('userData')),profile);
     const page = await app.firstWindow();
     const cdp = await page.context().newCDPSession(page);

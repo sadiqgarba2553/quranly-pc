@@ -4,6 +4,22 @@
 
 // Local static Qari photo mappings uploaded to public/reciters/
 const LOCAL_QARI_IMAGES = {
+  'ali jaber': '/reciters/ali-jaber.jpg',
+  'ali abdullah jaber': '/reciters/ali-jaber.jpg',
+  'abdul basit': '/reciters/abdul-basit.jpg',
+  'abdulbasit abdulsamad': '/reciters/abdul-basit.jpg',
+  'abdulbaset abdulsamad': '/reciters/abdul-basit.jpg',
+  'abdul basit abdul samad': '/reciters/abdul-basit.jpg',
+  'saad al ghamdi': '/reciters/saad-al-ghamdi.jpg',
+  'saad alghamdi': '/reciters/saad-al-ghamdi.jpg',
+  'abdul rahman al sudais': '/reciters/abdulrahman-al-sudais.jpg',
+  'abdulrahman alsudaes': '/reciters/abdulrahman-al-sudais.jpg',
+  'abdurrahman as sudais': '/reciters/abdulrahman-al-sudais.jpg',
+  'muhammad siddiq al minshawi': '/reciters/Mohammed Siddiq Al-Minshawi.jpg',
+  'mohamed siddiq el minshawi': '/reciters/Mohammed Siddiq Al-Minshawi.jpg',
+  'maher al mueaqly': '/reciters/Maher Al Meaqli.jpg',
+  'mishary rashid al afasy': '/reciters/Mishary Alafasi.jpg',
+  'mahmoud khalil al hosary': '/reciters/Mahmoud Khalil Al-Hussary.jpg',
   'abdulelah bin aoun': '/reciters/Abdulelah bin Aoun.jpg',
   'aoun': '/reciters/Abdulelah bin Aoun.jpg',
 
@@ -142,58 +158,25 @@ const LOCAL_QARI_IMAGES = {
   'salamah': '/reciters/Yasser Salamah.jpg',
 };
 
-/**
- * Generates an elegant, dignified SVG Qari portrait (100% offline, zero network 404s)
- */
-export function generateInitialsSvgDataUri(name) {
-  const cleanName = (name || 'Qari')
-    .replace(/^(shaikh|sheikh|qari|imam|hafiz|ustadh|dr\.|prof\.)\s+/i, '');
+const resolveUrl = path => `${(import.meta.env?.BASE_URL || '/').replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+const normalize = value => String(value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+  .replace(/^(?:sheikh|shaikh|qari|imam|hafiz|ustadh|dr\.?)\s+/,'')
+  .replace(/[’'`]/g,'').replace(/[-_]/g,' ').replace(/\b(?:mohammad|mohammed|muhammed|mohamed)\b/g,'muhammad').replace(/\s+/g,' ').trim();
 
-  const parts = cleanName.trim().split(/\s+/);
-  const initials = parts.length > 1
-    ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
-    : (parts[0] ? parts[0].slice(0, 2) : 'QA').toUpperCase();
-
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-    <circle cx="100" cy="100" r="100" fill="%2318181b"/>
-    <circle cx="100" cy="100" r="92" fill="none" stroke="%233f3f46" stroke-width="2"/>
-    <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-size="56" font-family="Inter, -apple-system, sans-serif" font-weight="700" letter-spacing="2">${initials}</text>
-  </svg>`;
-
-  return `data:image/svg+xml;utf8,${svg}`;
+export const getReciterFallbackUrl = () => resolveUrl('/reciters/reciter-silhouette.svg');
+// Retained for callers from older builds; fallback no longer uses initials.
+export const generateInitialsSvgDataUri = getReciterFallbackUrl;
+export function getReciterPhotoPath(name) {
+  const clean=normalize(name);
+  if(!clean)return null;
+  const entries=Object.entries(LOCAL_QARI_IMAGES).filter(([alias])=>normalize(alias).includes(' '));
+  const exact=entries.find(([alias])=>normalize(alias)===clean);
+  if(exact)return exact[1];
+  // Only full multiword aliases are eligible. Shared first names and loose
+  // surname tokens must never select another person's portrait.
+  const match=entries.find(([alias])=>{const key=normalize(alias);return key.includes(' ')&&(` ${clean} `).includes(` ${key} `);});
+  return match?.[1] || null;
 }
-
-const resolveUrl = (path) => {
-  const base = import.meta.env.BASE_URL || '/';
-  return `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
-};
-
-/**
- * Returns local Qari photo URL if available, or instant SVG data URI avatar
- */
-export function getReciterAvatarUrl(name, id) {
-  if (!name) return generateInitialsSvgDataUri('Qari');
-
-  const lower = name.toLowerCase().replace(/[-_]/g, ' ').replace(/\s+/g, ' ').trim();
-
-  // 1. Direct and substring match in local catalog
-  for (const [key, photoUrl] of Object.entries(LOCAL_QARI_IMAGES)) {
-    const cleanKey = key.toLowerCase().replace(/[-_]/g, ' ').trim();
-    if (lower.includes(cleanKey) || cleanKey.includes(lower)) {
-      return resolveUrl(photoUrl);
-    }
-  }
-
-  // 2. Token / surname match for multi-word names
-  const tokens = lower.split(' ').filter(t => t.length > 3 && !['sheikh', 'shaikh', 'qari', 'imam', 'mohammad', 'mohammed', 'ahmad', 'ahmed'].includes(t));
-  for (const token of tokens) {
-    for (const [key, photoUrl] of Object.entries(LOCAL_QARI_IMAGES)) {
-      if (key.includes(token)) {
-        return resolveUrl(photoUrl);
-      }
-    }
-  }
-
-  // 3. Fallback to instant dignified monochrome SVG avatar
-  return generateInitialsSvgDataUri(name);
+export function getReciterAvatarUrl(name) {
+  return resolveUrl(getReciterPhotoPath(name) || '/reciters/reciter-silhouette.svg');
 }

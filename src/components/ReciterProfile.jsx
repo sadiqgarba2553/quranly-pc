@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ArrowLeft, Play, Pause, Shuffle, Star, Info, Folder,
   CloudDownload, MoreHorizontal, Search, ChevronDown, Check, CheckCircle2,
@@ -6,11 +6,14 @@ import {
   BarChart3, Activity, TrendingUp, ChevronRight
 } from 'lucide-react';
 import { usePlayback, useData, useUserData, usePlayerActions } from '../context/PlayerContext';
-import { getReciterAvatarUrl } from '../utils/reciterPhotos';
+import { getReciterPhotoPath } from '../utils/reciterPhotos';
+import ReciterAvatar from './ReciterAvatar';
+import photoCredits from '../../public/reciters/photo-credits.json';
 import { getQariUniqueAttributes } from '../data/qariBios';
 import { recordProfileView, getReciterAnalytics } from '../utils/reciterAnalytics';
 import ReciterAnalyticsModal from './ReciterAnalyticsModal';
 import './ReciterProfile.css';
+import CollectionDownload from './CollectionDownload';
 
 /**
  * ReciterProfile — Redesigned with Unobstructed Qari Photo Header:
@@ -19,6 +22,8 @@ import './ReciterProfile.css';
  * - Numbered Surah list container
  */
 const ReciterProfile = ({ reciter, onBack }) => {
+  const profileRef=useRef(null);
+  useEffect(()=>{profileRef.current?.closest('.page-content')?.scrollTo({top:0,behavior:'instant'});},[reciter?.id]);
   const { currentTrack, isPlaying } = usePlayback();
   const { surahs = [] } = useData();
   const {
@@ -36,6 +41,8 @@ const ReciterProfile = ({ reciter, onBack }) => {
   const [showMoshafDropdown, setShowMoshafDropdown] = useState(false);
   const [showFullBio, setShowFullBio] = useState(false);
   const [showAnalytics, setShowAnalytics] = useState(false);
+  const [showCollection,setShowCollection]=useState(false);
+  useEffect(()=>{if(showCollection)profileRef.current?.querySelector('.collection-panel')?.scrollIntoView({block:'center',behavior:'instant'});},[showCollection]);
   const [analytics, setAnalytics] = useState(null);
 
   // Three dots menu state
@@ -62,6 +69,7 @@ const ReciterProfile = ({ reciter, onBack }) => {
 
   const qariAttr = getQariUniqueAttributes(reciter);
   const bioText = reciter.bio || qariAttr.bio;
+  const photoCredit=photoCredits[getReciterPhotoPath(reciter.name)];
 
   const isFav = favouriteReciterIds?.has
     ? (favouriteReciterIds.has(reciter.id) ||
@@ -73,7 +81,7 @@ const ReciterProfile = ({ reciter, onBack }) => {
   // Available Moshaf options from API
   const moshafList = reciter.moshaf?.length > 0
     ? reciter.moshaf
-    : [{ name: 'Hafs A\'n Assem - Murattal', surah_list: '1,2,3...114', surah_total: 114 }];
+    : [{ name: 'Hafs A\'n Assem - Murattal', surah_total: 114 }];
 
   const currentMoshaf = moshafList[selectedMoshafIndex] ?? moshafList[0];
 
@@ -121,18 +129,11 @@ const ReciterProfile = ({ reciter, onBack }) => {
     if (downloaded) {
       await removeTrack(surahItem.id, reciter.id);
     } else {
-      await downloadTrack(surahItem, reciter);
+      await downloadTrack(surahItem, reciter, selectedMoshafIndex);
     }
   };
 
-  const handleDownloadAll = async () => {
-    if (!availableSurahs?.length) return;
-    for (const surahItem of availableSurahs.slice(0, 10)) {
-      if (!isDownloaded(surahItem.id, reciter.id)) {
-        await downloadTrack(surahItem, reciter);
-      }
-    }
-  };
+  const handleDownloadAll = () => setShowCollection(value=>!value);
 
   const handleShareSurah = (surahItem) => {
     const text = `Listen to Surah ${surahItem.nameEnglish} (${surahItem.nameArabic}) by ${reciter.name} on Quranly!`;
@@ -155,42 +156,36 @@ const ReciterProfile = ({ reciter, onBack }) => {
   };
 
   return (
-    <div className="reciter-profile-view">
-      {/* Top Cover Section: Pure Qari Photo with Zero Text Overlap */}
-      <div className="profile-hero-cover">
-        <div className="hero-portrait-wrap">
-          <img
-            src={reciter.avatar || getReciterAvatarUrl(reciter.name, reciter.id)}
-            alt={reciter.name}
-            className="hero-qari-img"
-          />
-          <div className="hero-gradient-fade" />
-        </div>
-
-        {/* Top Floating Bar */}
-        <div className="hero-top-nav">
+    <div className="reciter-profile-view" ref={profileRef}>
+      <div className="hero-top-nav">
           <button className="icon-circle-btn" onClick={onBack} aria-label="Back">
-            <ArrowLeft size={18} color="#fff" />
+            <ArrowLeft size={18} color="currentColor" />
           </button>
           <div className="top-nav-right">
             <button className="icon-circle-btn" title="Reciter Analytics & Stats" onClick={() => setShowAnalytics(true)}>
-              <BarChart3 size={16} color="#fff" />
+              <BarChart3 size={16} color="currentColor" />
             </button>
             <button className="icon-circle-btn" title="Share Reciter" onClick={handleShareQari}>
-              <Share2 size={16} color="#fff" />
+              <Share2 size={16} color="currentColor" />
             </button>
             <button className="icon-circle-btn" title="Reciter Info" onClick={() => setShowFullBio(v => !v)}>
-              <Info size={16} color="#fff" />
+              <Info size={16} color="currentColor" />
             </button>
           </div>
         </div>
-      </div>
+      <section className="profile-summary glass-panel" aria-label="Reciter profile">
+        <div className="profile-hero-cover">
+          <div className="hero-portrait-wrap">
+            <ReciterAvatar name={reciter.name} alt={reciter.name} className="hero-qari-img" width={220} height={240}/>
+          </div>
+          {photoCredit && <p className="reciter-photo-credit"><a href={photoCredit.source} target="_blank" rel="noreferrer">Photo: {photoCredit.author}</a><span> · </span><a href={photoCredit.licenseUrl} target="_blank" rel="noreferrer">{photoCredit.license}</a></p>}
+        </div>
 
       {/* Qari Details Container: Placed Cleanly BELOW the Photo */}
       <div className="hero-details-container">
         <h1 className="qari-hero-name">{reciter.name}</h1>
         
-        <div className="qari-sub-title">{qariAttr.title}</div>
+        <div className="qari-sub-title">Quran reciter{reciter.country ? ` · ${reciter.country}` : ''}</div>
 
         <div className="qari-tags-row">
           {qariAttr.tags.map((tag, idx) => (
@@ -199,26 +194,26 @@ const ReciterProfile = ({ reciter, onBack }) => {
         </div>
 
         {/* Live Analytics Trigger Card */}
-        <div className="profile-analytics-trigger-card" onClick={() => setShowAnalytics(true)}>
-          <div className="analytics-card-left">
-            <div className="analytics-card-badge">
+        <button className="profile-analytics-trigger-card" onClick={() => setShowAnalytics(true)} aria-label="View your listening statistics">
+          <span className="analytics-card-left">
+            <span className="analytics-card-badge">
               <span className={`live-dot-mini ${isCurrentlyPlaying ? 'playing' : ''}`} />
-              <span>{isCurrentlyPlaying ? 'PLAYING NOW' : 'SITE ANALYTICS'}</span>
-            </div>
-            <div className="analytics-card-headline">
+              <span>{isCurrentlyPlaying ? 'PLAYING NOW' : 'YOUR LISTENING'}</span>
+            </span>
+            <span className="analytics-card-headline">
               <span><strong>{analytics?.totalPlays || 0}</strong> {analytics?.totalPlays === 1 ? 'play' : 'plays'}</span>
               <span className="dot-sep">•</span>
               <span><strong>{analytics?.totalMinutes || 0}m</strong> listened</span>
               <span className="dot-sep">•</span>
               <span><strong>{analytics?.profileViews || 1}</strong> {analytics?.profileViews === 1 ? 'view' : 'views'}</span>
-            </div>
-          </div>
-          <div className="analytics-card-btn">
+            </span>
+          </span>
+          <span className="analytics-card-btn">
             <BarChart3 size={14} />
             <span>Analytics</span>
             <ChevronRight size={14} />
-          </div>
-        </div>
+          </span>
+        </button>
 
         {/* Action Control Buttons */}
         <div className="hero-action-buttons">
@@ -227,7 +222,7 @@ const ReciterProfile = ({ reciter, onBack }) => {
             onClick={handleShufflePlay}
             title="Shuffle Recitations"
           >
-            <Shuffle size={18} color="#fff" />
+            <Shuffle size={18} color="currentColor" />
           </button>
 
           <button
@@ -236,12 +231,12 @@ const ReciterProfile = ({ reciter, onBack }) => {
           >
             {isCurrentReciter && isPlaying ? (
               <>
-                <Pause size={18} fill="#000000" color="#000000" />
+                <Pause size={18} fill="currentColor" color="currentColor" />
                 <span>Pause</span>
               </>
             ) : (
               <>
-                <Play size={18} fill="#000000" color="#000000" style={{ marginLeft: 2 }} />
+                <Play size={18} fill="currentColor" color="currentColor" style={{ marginLeft: 2 }} />
                 <span>Play</span>
               </>
             )}
@@ -250,9 +245,9 @@ const ReciterProfile = ({ reciter, onBack }) => {
           <button
             className={`action-circle-btn ${isFav ? 'active-fav' : ''}`}
             onClick={() => toggleFavouriteReciter(reciter.id)}
-            title={isFav ? "Following Qari" : "Follow Qari"}
+            title={isFav ? "Following Qari" : "Follow Qari"} aria-pressed={isFav}
           >
-            <Star size={18} fill={isFav ? '#ffffff' : 'none'} color={isFav ? '#ffffff' : '#fff'} />
+            <Star size={18} fill={isFav ? 'currentColor' : 'none'} color="currentColor" />
           </button>
         </div>
 
@@ -266,6 +261,10 @@ const ReciterProfile = ({ reciter, onBack }) => {
           )}
         </div>
       </div>
+
+      </section>
+
+      {showCollection&&<CollectionDownload reciter={reciter} surahs={safeSurahs} initialEdition={selectedMoshafIndex} onClose={()=>setShowCollection(false)}/>}
 
       {/* Popular Recitations (Top 5) Section */}
       <div className="popular-recitations-section">
@@ -298,7 +297,7 @@ const ReciterProfile = ({ reciter, onBack }) => {
                     <p>{surahItem.nameArabic}</p>
                   </div>
                   <button className="popular-play-btn" title={`Play ${surahItem.nameEnglish}`}>
-                    {isPlayingThis ? <Pause size={14} fill="#000000" color="#000000" /> : <Play size={14} fill="#000000" color="#000000" style={{ marginLeft: 2 }} />}
+                    {isPlayingThis ? <Pause size={14} fill="currentColor" color="currentColor" /> : <Play size={14} fill="currentColor" color="currentColor" style={{ marginLeft: 2 }} />}
                   </button>
                 </div>
               );
@@ -310,7 +309,7 @@ const ReciterProfile = ({ reciter, onBack }) => {
       {/* Surahs Section Header */}
       <div className="surahs-recorded-header">
         <h2>{availableSurahs.length} surahs recorded</h2>
-        <button className="cloud-header-btn" title="Download surahs for offline listening" onClick={handleDownloadAll}>
+        <button className="cloud-header-btn" title="Download collection" aria-label="Download reciter collection" onClick={handleDownloadAll}>
           <CloudDownload size={20} color="var(--text-primary)" />
         </button>
       </div>

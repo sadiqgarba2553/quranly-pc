@@ -514,12 +514,12 @@ const Mushaf = () => {
                   <span>Tajweed Key:</span>
                 </div>
                 <div className="legend-pills">
-                  <span className="legend-pill key-n">Ghunnah</span>
-                  <span className="legend-pill key-q">Qalqalah</span>
-                  <span className="legend-pill key-c">Ikhfa</span>
-                  <span className="legend-pill key-i">Idgham</span>
-                  <span className="legend-pill key-o">Iqlab</span>
-                  <span className="legend-pill key-p">Madd</span>
+                  <span className="legend-pill key-ghunnah">Ghunnah</span>
+                  <span className="legend-pill key-qalqalah">Qalqalah</span>
+                  <span className="legend-pill key-ikhfa">Ikhfa</span>
+                  <span className="legend-pill key-idgham">Idgham</span>
+                  <span className="legend-pill key-iqlab">Iqlab</span>
+                  <span className="legend-pill key-madd">Madd</span>
                 </div>
               </div>
             )}

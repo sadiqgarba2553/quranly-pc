@@ -124,6 +124,10 @@ export async function removeAudioTrack(surahId, reciterId) {
 
 // Try to get cached response matching URL
 export async function getCachedAudioUrl(audioUrl) {
+  if(audioUrl?.startsWith('quranly-audio://cache/'))return audioUrl;
+  if(audioUrl&&window.quranlyDesktop?.collections){
+    try{const local=await window.quranlyDesktop.collections.audio(audioUrl);if(local)return local;}catch(error){console.warn('Collection audio unavailable:',error.message);}
+  }
   if (!audioUrl || !('caches' in window)) return audioUrl;
   try {
     const cache = await caches.open(CACHE_NAME);

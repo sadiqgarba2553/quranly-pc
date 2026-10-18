@@ -40,3 +40,12 @@
  .mushaf-header .font-btn { min-width: 28px; }
  .mushaf-paper-card.glass-panel { padding: 18px 16px 24px; }
 }
+
+/* AlQuran Cloud markup codes, grouped by the guide's six rule families.
+   Reference: https://github.com/vipafattal/TajweedParser#styles */
+.mushaf-page .tajweed-rendered .tajweed-g,.mushaf-page .legend-pill.key-ghunnah { color:var(--tajweed-ghunnah); }
+.mushaf-page .tajweed-rendered .tajweed-q,.mushaf-page .legend-pill.key-qalqalah { color:var(--tajweed-qalqalah); }
+.mushaf-page .tajweed-rendered :is(.tajweed-c,.tajweed-f),.mushaf-page .legend-pill.key-ikhfa { color:var(--tajweed-ikhfa); }
+.mushaf-page .tajweed-rendered :is(.tajweed-a,.tajweed-u,.tajweed-w,.tajweed-d,.tajweed-b),.mushaf-page .legend-pill.key-idgham { color:var(--tajweed-idgham); }
+.mushaf-page .tajweed-rendered :is(.tajweed-n,.tajweed-p,.tajweed-m,.tajweed-o),.mushaf-page .legend-pill.key-madd { color:var(--tajweed-madd); }
+.mushaf-page .tajweed-rendered .tajweed-i,.mushaf-page .legend-pill.key-iqlab { color:var(--tajweed-iqlab); }

@@ -1,0 +1,30 @@
+{
+  "/reciters/ali-jaber.jpg": {
+    "author": "Unknown author",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ali_Abdullah_Jaber.jpg",
+    "note": "Original file; displayed at reduced size and cropped in small avatars."
+  },
+  "/reciters/abdul-basit.jpg": {
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_(3)_(cropped).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_(3)_(cropped).jpg",
+    "note": "Commons portrait crop; no additional image edits. Displayed at reduced size and cropped in small avatars."
+  },
+  "/reciters/saad-al-ghamdi.jpg": {
+    "author": "الشيخ هيثم الدخين",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Saad_al_Ghamdi.jpg",
+    "note": "Original file; displayed at reduced size and cropped in small avatars."
+  },
+  "/reciters/abdulrahman-al-sudais.jpg": {
+    "author": "Prime Minister's Office",
+    "license": "GODL-India",
+    "licenseUrl": "https://data.gov.in/sites/default/files/Gazette_Notification_OGDL.pdf",
+    "source": "https://commons.wikimedia.org/wiki/File:Abdul-Rahman_Al-Sudais_(Cropped,_2011).jpg",
+    "note": "Original file; displayed at reduced size and cropped in small avatars."
+  }
+}

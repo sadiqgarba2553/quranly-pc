@@ -1138,7 +1138,7 @@ export function PlayerProvider({ children }) {
   useEffect(() => {
     if (!('mediaSession' in navigator)) return;
     const { surah, reciter } = state.currentTrack;
-    const artworkSrc = reciter.avatar || '/logo.png';
+    const artworkSrc = getReciterAvatarUrl(reciter.name);
     navigator.mediaSession.metadata = new MediaMetadata({
       title: `${surah.nameEnglish} (${surah.nameArabic})`,
       artist: reciter.name,

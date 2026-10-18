@@ -11,6 +11,8 @@ const ReciterCircle = memo(({ reciter, onClick }) => (
   <div
     className="reciter-circle"
     onClick={() => onClick(reciter)}
+    role="button" tabIndex={0} aria-label={`View ${reciter.name} profile`}
+    onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();onClick(reciter);}}}
     style={{ cursor: 'pointer' }}
   >
     <div className="circle-img-wrap">

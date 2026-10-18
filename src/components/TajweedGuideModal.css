@@ -1,115 +1,41 @@
-.tajweed-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  z-index: 1200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.2s ease-out;
-}
-
-.tajweed-modal-card {
-  width: 100%;
-  max-width: 640px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  border-radius: 20px;
-  background: var(--bg-color);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  animation: modalSlideUp 0.25s ease forwards;
-}
-
-.tajweed-modal-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.tajweed-modal-title {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.tajweed-icon-badge {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  border-radius: 12px;
-  background: var(--card-bg-hover);
-  border: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-primary);
-}
-
-.tajweed-modal-title h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 2px;
-}
-
-.tajweed-modal-title p {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-}
-
-.tajweed-close-btn {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  border-radius: 50%;
-  background: var(--card-bg-hover);
-  border: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: color 0.15s ease;
-}
-
-.tajweed-close-btn:hover {
-  color: var(--text-primary);
-}
-
-.rule-card {
-  background: var(--card-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 12px;
-}
-
-.rule-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.rule-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.rule-arabic {
-  font-family: 'Amiri Quran', 'Amiri', serif;
-  font-size: 20px;
-  color: var(--text-primary);
-  direction: rtl;
-}
+:root { --tajweed-ghunnah:#0e7490; --tajweed-qalqalah:#1d4ed8; --tajweed-ikhfa:#b45309; --tajweed-idgham:#7e22ce; --tajweed-madd:#b91c1c; --tajweed-iqlab:#15803d; }
+[data-theme="dark"] { --tajweed-ghunnah:#67d5e8; --tajweed-qalqalah:#93b8fb; --tajweed-ikhfa:#f4ba78; --tajweed-idgham:#d4b0fa; --tajweed-madd:#f99b9b; --tajweed-iqlab:#86dab0; }
+.tajweed-modal-overlay { position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(4,9,19,.65); }
+.tajweed-modal-card { width:min(880px,100%); max-height:calc(100dvh - 48px); overflow-y:auto; overscroll-behavior:contain; padding:28px; display:flex; flex-direction:column; gap:22px; outline:none; color:var(--text-primary); font-family:var(--font-ui); }
+.tajweed-modal-header { display:flex; align-items:flex-start; gap:16px; justify-content:space-between; }
+.tajweed-modal-title { display:flex; align-items:center; gap:14px; min-width:0; }
+.tajweed-icon-badge { display:grid; place-items:center; width:46px; height:46px; flex-shrink:0; border:1px solid var(--glass-border); border-radius:14px; background:var(--lg-inset); }
+.tajweed-modal-title h3 { margin:0 0 5px; font-size:21px; font-weight:650; letter-spacing:-.025em; line-height:1.3; }
+.tajweed-modal-title p { margin:0; color:var(--text-secondary); font-size:13px; line-height:1.6; }
+.tajweed-close-btn { display:grid; place-items:center; width:36px; height:36px; flex-shrink:0; border:1px solid var(--glass-border); border-radius:50%; color:var(--text-secondary); background:var(--lg-inset); }
+.tajweed-rule-tabs { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; }
+.tajweed-tab-pill { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; min-width:0; min-height:88px; padding:12px 6px; border:1px solid var(--glass-border); border-radius:14px; background:var(--lg-inset); color:var(--text-secondary); transition:background 150ms var(--ease-out),transform 150ms var(--ease-out); }
+.tajweed-tab-pill.active { background:var(--lg-fill-hover); border-color:var(--rule-color); color:var(--text-primary); box-shadow:inset 0 -2px var(--rule-color); }
+.tajweed-dot { width:6px; height:6px; border-radius:50%; position:absolute; top:10px; right:10px; }
+.tajweed-pill-name { font-family:var(--font-quran); font-size:20px; line-height:1.5; }
+.tajweed-pill-english { font-size:11px; font-weight:550; }
+.tajweed-detail-panel { padding:22px; border:1px solid var(--glass-border); border-radius:18px; background:var(--lg-inset); display:flex; flex-direction:column; gap:20px; }
+.tajweed-detail-header { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.tajweed-arabic-title { color:var(--rule-color); font-family:var(--font-quran); font-size:30px; line-height:1.6; text-align:left; margin-bottom:4px; }
+.tajweed-rule-heading { font-size:17px; font-weight:600; margin:0; line-height:1.4; }
+.tajweed-audio-btn { min-height:42px; padding:10px 14px; display:flex; align-items:center; justify-content:center; gap:8px; border-radius:12px; background:var(--accent-color); color:var(--on-accent); font-size:12px; font-weight:600; flex-shrink:0; }
+.tajweed-desc-text { margin:0; max-width:70ch; color:var(--text-secondary); font-size:14px; line-height:1.8; }
+.tajweed-meta-grid { display:grid; grid-template-columns:1fr 1.25fr; gap:12px; }
+.tajweed-meta-box { display:flex; flex-direction:column; gap:12px; padding:16px; min-width:0; background:var(--lg-fill); border:1px solid var(--glass-border); border-radius:14px; }
+.tajweed-meta-box .meta-label { color:var(--text-secondary); font-size:11px; font-weight:600; }
+.tajweed-meta-box .meta-value { font-family:var(--font-quran); color:var(--text-primary); font-size:26px; line-height:1.9; text-align:right; overflow-wrap:break-word; }
+.tajweed-tip-footer { display:flex; gap:10px; align-items:flex-start; color:var(--text-secondary); font-size:12px; line-height:1.6; }
+.tajweed-tip-footer svg { flex-shrink:0; margin-top:2px; }
+.tajweed-legend-footer h4 { margin:0 0 12px; font-size:12px; font-weight:600; color:var(--text-secondary); }
+.tajweed-legend-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.tajweed-legend-item { display:flex; align-items:center; gap:9px; min-height:40px; padding:8px 10px; border-radius:10px; text-align:left; color:var(--text-secondary); font-size:11px; border:1px solid transparent; }
+.tajweed-legend-item[aria-pressed="true"] { border-color:var(--glass-border); background:var(--lg-inset); }
+.legend-badge { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.legend-arabic { font-family:var(--font-quran); font-size:17px; line-height:1.5; }
+.tajweed-audio-error { font-size:12px; line-height:1.5; margin:0; border-left:2px solid var(--text-secondary); padding-left:10px; }
+.tajweed-modal-card button:focus-visible { outline:2px solid var(--accent-color); outline-offset:3px; }
+.tajweed-modal-card button:active { transform:scale(.97); }
+@media (hover:hover) and (pointer:fine) { .tajweed-tab-pill:hover,.tajweed-legend-item:hover { background:var(--lg-fill-hover); } }
+@media(max-width:720px) { .tajweed-modal-card { padding:20px; gap:18px; } .tajweed-rule-tabs { grid-template-columns:repeat(3,minmax(0,1fr)); } .tajweed-tab-pill { min-height:76px; } .tajweed-detail-panel { padding:18px; } .tajweed-detail-header { align-items:flex-start; flex-direction:column; gap:14px; } .tajweed-legend-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:480px) { .tajweed-modal-overlay { padding:12px; } .tajweed-modal-card { max-height:calc(100dvh - 24px); padding:16px; } .tajweed-icon-badge { display:none; } .tajweed-modal-title h3 { font-size:19px; } .tajweed-meta-grid { grid-template-columns:1fr; } }
+@media(prefers-reduced-motion:reduce) { .tajweed-modal-card button { transition:none; } }

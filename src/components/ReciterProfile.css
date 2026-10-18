@@ -744,3 +744,37 @@
 
 
 
+
+/* Portraits are contained at their natural proportions, never used as banners. */
+.reciter-profile-view { margin:0; padding:8px 0 28px; gap:24px; min-width:0; }
+.reciter-profile-view .hero-top-nav { position:relative; width:100%; padding:0; z-index:1; }
+.profile-summary { display:grid; grid-template-columns:220px minmax(0,1fr); gap:32px; padding:28px; align-items:start; }
+.reciter-profile-view .profile-hero-cover { position:relative; height:auto; min-height:0; padding:0; width:100%; overflow:visible; justify-content:flex-start; gap:12px; }
+.reciter-profile-view .hero-portrait-wrap { position:relative; inset:auto; width:100%; height:240px; border-radius:18px; background:var(--lg-inset); border:1px solid var(--glass-border); overflow:hidden; }
+.reciter-profile-view .hero-qari-img { display:block; width:100%; height:100%; object-fit:contain !important; object-position:center !important; border-radius:0 !important; filter:none; transform:none; transition:none; }.reciter-photo-credit { margin:0; color:var(--text-secondary); font-size:10px; line-height:1.7; overflow-wrap:anywhere; }
+.reciter-photo-credit a { color:inherit; text-decoration:underline; text-underline-offset:2px; }
+.reciter-profile-view .hero-details-container { align-items:flex-start; text-align:left; padding:0; margin:0; gap:12px; min-width:0; }
+.reciter-profile-view .qari-hero-name { margin:0; font-size:clamp(24px,3vw,34px); line-height:1.2; letter-spacing:-.035em; font-weight:650; color:var(--text-primary); text-shadow:none; }
+.reciter-profile-view .qari-sub-title { text-transform:none; font-size:13px; font-weight:400; letter-spacing:0; color:var(--text-secondary); }
+.reciter-profile-view .qari-tags-row { justify-content:flex-start; flex-wrap:wrap; gap:6px; }
+.reciter-profile-view .qari-tag-chip { background:var(--lg-inset); border:1px solid var(--glass-border); color:var(--text-secondary); font-size:11px; padding:4px 9px; font-weight:500; }
+.reciter-profile-view .profile-analytics-trigger-card { width:100%; max-width:none; margin:4px 0; padding:14px 16px; display:flex; gap:14px; align-items:center; justify-content:space-between; border:1px solid var(--glass-border); background:var(--lg-inset); border-radius:14px; color:var(--text-primary); text-align:left; box-shadow:none; }
+.reciter-profile-view .analytics-card-left { display:flex; flex-direction:column; gap:7px; min-width:0; }
+.reciter-profile-view .analytics-card-badge { display:flex; align-items:center; gap:7px; color:var(--text-secondary); font-size:10px; letter-spacing:.04em; }
+.reciter-profile-view .analytics-card-headline { display:flex; gap:8px; flex-wrap:wrap; font-size:12px; color:var(--text-secondary); }
+.reciter-profile-view .analytics-card-headline strong { color:var(--text-primary); }
+.reciter-profile-view .analytics-card-btn { background:none; color:var(--text-primary); padding:0; font-size:11px; }
+.reciter-profile-view .hero-action-buttons { justify-content:flex-start; margin:0; gap:10px; }
+.reciter-profile-view .action-circle-btn,.reciter-profile-view .icon-circle-btn { background:var(--lg-fill); color:var(--text-primary); border:1px solid var(--glass-border); box-shadow:none; }
+.reciter-profile-view .action-circle-btn.active-fav { background:var(--lg-fill-hover); border-color:var(--accent-color); color:var(--accent-color); }
+.reciter-profile-view .play-hero-pill { min-height:44px; padding:11px 30px; font-size:13px; font-weight:600; background:var(--accent-color) !important; color:var(--on-accent) !important; }
+.reciter-profile-view .qari-bio-text { max-width:68ch; font-size:13px; line-height:1.8; margin:0; color:var(--text-secondary); }
+.reciter-profile-view button:focus-visible { outline:2px solid var(--accent-color); outline-offset:3px; }
+@media(max-width:1100px) { .profile-summary { grid-template-columns:150px minmax(0,1fr); gap:22px; padding:22px; } .reciter-profile-view .hero-portrait-wrap { height:180px; } .reciter-profile-view .analytics-card-btn span { display:none; } }
+@media(max-width:650px) { .profile-summary { grid-template-columns:1fr; gap:20px; padding:20px; } .reciter-profile-view .profile-hero-cover { width:160px; } .reciter-profile-view .hero-portrait-wrap { height:180px; } .reciter-profile-view .analytics-card-headline { font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { .reciter-profile-view button { transition:none; } }
+.reciter-profile-view .surahs-dark-container { background:var(--lg-fill); border:1px solid var(--glass-border); border-radius:18px; }
+.reciter-profile-view .row-num-circle { color:var(--text-secondary); background:var(--lg-inset); border:1px solid var(--glass-border); }
+.reciter-profile-view .surah-card-row:hover,.reciter-profile-view .surah-card-row:active,.reciter-profile-view .surah-card-row.playing { background:var(--lg-fill-hover); }
+.reciter-profile-view .popular-surah-row { background:var(--lg-fill); border-color:var(--glass-border); }
+.reciter-profile-view .popular-play-btn { background:var(--accent-color); color:var(--on-accent); }

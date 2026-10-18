@@ -1,20 +1,20 @@
 import { useState, useEffect, memo } from 'react';
-import { getReciterAvatarUrl, generateInitialsSvgDataUri } from '../utils/reciterPhotos';
+import { getReciterAvatarUrl, getReciterFallbackUrl } from '../utils/reciterPhotos';
 
 /**
  * ReciterAvatar — Renders a reciter photo with instant offline SVG fallback.
  */
-const ReciterAvatar = memo(({ name, src, className = '', alt = '', width, height }) => {
-  const primaryUrl = src || getReciterAvatarUrl(name);
-  const fallbackUrl = generateInitialsSvgDataUri(name || 'Qari');
+const ReciterAvatar = memo(({ name, className = '', alt = '', width, height }) => {
+  const primaryUrl = getReciterAvatarUrl(name);
+  const fallbackUrl = getReciterFallbackUrl();
 
   const [imgSrc, setImgSrc] = useState(primaryUrl);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    setImgSrc(src || getReciterAvatarUrl(name));
+    setImgSrc(getReciterAvatarUrl(name));
     setHasError(false);
-  }, [src, name]);
+  }, [name]);
 
   const handleError = () => {
     if (!hasError) {

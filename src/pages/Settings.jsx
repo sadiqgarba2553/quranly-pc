@@ -1,3 +1,4 @@
+import {version} from '../../package.json';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -399,7 +400,7 @@ const Settings = () => {
       </div>
 
       <div className="settings-footer">
-        <p>Quranly v0.1.0 Alpha • Powered by Blue Cloud AI (bluecloudai.online)</p>
+        <p>Quranly v{version} • Powered by Blue Cloud AI (bluecloudai.online)</p>
       </div>
 
       {modal === 'collaborate' && <CollaborateModal onClose={() => setModal(null)} />}

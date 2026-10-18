@@ -3,13 +3,17 @@ const path = require('node:path');
 const fs = require('node:fs/promises');
 const { pathToFileURL } = require('node:url');
 const { resolveAsset, isExternalUrl, APP_ORIGIN } = require('./security.cjs');
+const { CollectionDownloads } = require('./collections.cjs');
+const { createReadStream } = require('node:fs');
+const { Readable } = require('node:stream');
 if (!app.isPackaged && process.env.QURANLY_TEST_PROFILE) app.setPath('userData', process.env.QURANLY_TEST_PROFILE);
 if (app.commandLine.hasSwitch('user-data-dir')) app.setPath('userData', path.resolve(app.commandLine.getSwitchValue('user-data-dir')));
 
 protocol.registerSchemesAsPrivileged([{ scheme: 'quranly', privileges: {
   standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, stream: true,
-} }]);
+} }, { scheme: 'quranly-audio', privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, stream: true } }]);
 let mainWindow;
+let collectionDownloads, shuttingDown=false;
 const devUrl = !app.isPackaged && process.env.QURANLY_DEV_URL;
 const trusted = url => url.startsWith(`${APP_ORIGIN}/`) || (devUrl && new URL(url).origin === new URL(devUrl).origin);
 const external = url => { if (isExternalUrl(url)) shell.openExternal(url).catch(console.error); };
@@ -38,8 +42,20 @@ function createWindow() {
 if (!app.requestSingleInstanceLock()) app.quit();
 else {
   app.on('second-instance', () => { if (mainWindow) { if (mainWindow.isMinimized()) mainWindow.restore(); mainWindow.focus(); } });
-  app.whenReady().then(() => {
+  app.whenReady().then(async () => {
     app.setAppUserModelId('com.bluecloud.quranly');
+    collectionDownloads=new CollectionDownloads(path.join(app.getPath('userData'),'audio-collections'),app.isPackaged?path.join(process.resourcesPath,'audio-engine','ffmpeg.exe'):require('ffmpeg-static'));
+    let collectionInitError='';try{await collectionDownloads.init();}catch(error){collectionInitError=error.message;}
+    collectionDownloads.on('change',jobs=>{if(mainWindow&&!mainWindow.isDestroyed())mainWindow.webContents.send('collections:changed',jobs);});
+    const collectionSender=event=>{if(event.sender!==mainWindow?.webContents||!trusted(event.senderFrame.url))throw Error('Untrusted sender');if(collectionInitError)throw Error(collectionInitError);};
+    for(const [name,handler] of Object.entries({list:()=>collectionDownloads.snapshot(),estimate:spec=>collectionDownloads.estimate(spec),start:spec=>collectionDownloads.start(spec),pause:id=>collectionDownloads.pause(id),resume:id=>collectionDownloads.resume(id),remove:id=>collectionDownloads.remove(id),audio:url=>collectionDownloads.resolveAudio(url)}))ipcMain.handle(`collections:${name}`,async(event,...args)=>{collectionSender(event);return handler(...args);});
+    protocol.handle('quranly-audio',async request=>{
+      try{const file=collectionDownloads.resolveFile(request.url);if(!file)return new Response('Not found',{status:404});const {size}=await fs.stat(file);let start=0,end=size-1,status=200;
+        const range=request.headers.get('range');if(range){const match=/^bytes=(\d*)-(\d*)$/.exec(range);if(!match||(!match[1]&&!match[2]))return new Response(null,{status:416,headers:{'Content-Range':`bytes */${size}`}});start=match[1]?Number(match[1]):Math.max(0,size-Number(match[2]));end=match[1]&&match[2]?Math.min(Number(match[2]),end):end;if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start>end||start>=size)return new Response(null,{status:416,headers:{'Content-Range':`bytes */${size}`}});status=206;}
+        const headers={'Content-Type':'audio/mpeg','Content-Length':String(end-start+1),'Accept-Ranges':'bytes','Access-Control-Allow-Origin':APP_ORIGIN};if(status===206)headers['Content-Range']=`bytes ${start}-${end}/${size}`;
+        return new Response(request.method==='HEAD'?null:Readable.toWeb(createReadStream(file,{start,end})),{status,headers});
+      }catch{return new Response('Audio unavailable',{status:404});}
+    });
     const root = path.join(app.getAppPath(), 'dist');
     protocol.handle('quranly', async request => {
       const asset = resolveAsset(root, request.url);
@@ -63,7 +79,7 @@ else {
     session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
       if (!details.url.startsWith(APP_ORIGIN)) return callback({ responseHeaders: details.responseHeaders });
       callback({ responseHeaders: { ...details.responseHeaders, 'Content-Security-Policy': [
-        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https: wss:; media-src 'self' blob: https:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-src 'none'",
+        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https: wss: quranly-audio:; media-src 'self' blob: https: quranly-audio:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-src 'none'",
       ] } });
     });
     ipcMain.handle('app:version', event => { if (!trusted(event.senderFrame.url)) throw Error('Untrusted sender'); return app.getVersion(); });
@@ -83,4 +99,5 @@ else {
     app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
   });
   app.on('window-all-closed', () => app.quit());
+  app.on('before-quit',event=>{if(collectionDownloads&&!shuttingDown){event.preventDefault();shuttingDown=true;collectionDownloads.close().finally(()=>app.quit());}});
 }

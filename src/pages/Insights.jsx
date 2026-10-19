@@ -93,7 +93,7 @@ const Insights = () => {
     setLoadingLeaderboard(true);
     try {
       const [users,membership]=await Promise.all([getLeaderboard(20),getCommunityParticipation()]);
-      setLeaderboardData(users);setCommunity(membership);setCommunityName(membership?.display_name || '');setCommunityError('');
+      setLeaderboardData(users);setCommunity(membership);setCommunityName(draft=>membership?.display_name || draft);setCommunityError('');
     } catch(error) {setCommunityError(error.message || 'Could not load rankings.');}
     finally {setLoadingLeaderboard(false);}
   };

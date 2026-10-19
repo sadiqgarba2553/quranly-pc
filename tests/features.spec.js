@@ -152,7 +152,7 @@ test('community participation requires an explicit join and can be removed',asyn
         if(method==='POST') {joined++;const body=route.request().postDataJSON();member=body;return route.fulfill({status:201,body:''});}
         if(method==='DELETE') {member=null;return route.fulfill({status:204,body:''});}
         if(method==='PATCH') return route.fulfill({status:204,body:''});
-        if(url.searchParams.get('select')==='display_name') return route.fulfill({json:member ? [{display_name:member.display_name}] : []});
+        if(url.searchParams.get('select')==='display_name'){const snapshot=member ? [{display_name:member.display_name}] : [];if(!member)await new Promise(resolve=>setTimeout(resolve,800));return route.fulfill({json:snapshot});}
         return route.fulfill({json:member ? [member] : []});
       }
       return route.fulfill({json:[]});
@@ -168,6 +168,7 @@ test('community participation requires an explicit join and can be removed',asyn
     await expect(page.getByLabel('Community display name',{exact:true})).toBeVisible();
     expect(joined).toBe(0);
     await page.getByLabel('Community display name',{exact:true}).fill('Public alias');
+    await expect(page.locator('.refresh-lb-btn')).toBeEnabled();await expect(page.getByLabel('Community display name',{exact:true})).toHaveValue('Public alias');
     await page.getByRole('button',{name:'Join leaderboard',exact:true}).click();
     await expect(page.getByRole('button',{name:'Leave leaderboard',exact:true})).toBeVisible();
     expect(member.display_name).toBe('Public alias');expect(JSON.stringify(member)).not.toContain('fixture@example.invalid');

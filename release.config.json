@@ -1,30 +1,19 @@
 {
   "appId": "quranly",
   "repository": "sadiqgarba2553/quranly-pc",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "sourceName": "Quranly",
-  "title": "Quranly PC 0.5.0 \u00b7 Windows",
-  "notes": "Quran reader and reciter library \u00c2\u00b7 Offline recitations and playlists \u00c2\u00b7 Memorization review and daily azkar \u00c2\u00b7 Optional account backup and playback resume",
-  "migration": {
-    "source": "https://github.com/sadiqgarba2553/bluecloud-website/releases/download/v0.5.0",
-    "assets": [
-      {
-        "name": "quranly-0.5.0-win-x64.zip",
-        "size": 187564710,
-        "sha256": "30a27bea73b7367028611b4863e662efac862300d43ccbc349d8d929ece740f2"
-      },
-      {
-        "name": "Quranly-Setup-0.5.0-x64.exe",
-        "size": 137359660,
-        "sha256": "c20a1fba8229a84a3b5b6894e0e0b1d8cd00bb34d404a67cfe3208ce3705d771"
-      }
-    ]
-  },
+  "title": "Quranly 0.6.0 - Windows",
+  "notes": "Transactional offline audio, missing-file checks and repair, and reliable playback checkpoints.",
   "package": {
-    "name": "quranly-0.5.0-win-x64.zip",
+    "name": "quranly-0.6.0-win-x64.zip",
     "type": "zip",
     "minimumLauncher": "0.5.0",
-    "executable": "Quranly.exe",
-    "unpackedSize": 475019183
-  }
+    "executable": "Quranly.exe"
+  },
+  "localAssets": [
+    ".release/packages/quranly-0.6.0-win-x64.zip",
+    "release/Quranly-Setup-0.6.0-x64.exe"
+  ],
+  "unpackedDirectory": "release/win-unpacked"
 }

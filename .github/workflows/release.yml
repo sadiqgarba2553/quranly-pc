@@ -5,14 +5,22 @@ permissions:
   contents: write
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    timeout-minutes: 40
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
           node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
       - run: node --test tools/release.test.mjs
-      - run: node tools/release.mjs migrate
+      - run: npm run dist:win
+      - run: node tests/packaged-smoke.cjs
+      - run: npx playwright test tests/offline.spec.js tests/reader-ui.spec.js tests/features.spec.js
+      - run: node tools/package-zip.mjs
+      - run: node tools/release.mjs prepare
       - run: node tools/release.mjs publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

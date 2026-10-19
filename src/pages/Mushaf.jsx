@@ -136,7 +136,7 @@ const Mushaf = () => {
   const scrollRef = useRef(null);
 
   // Context for bookmarks
-  const { readingPage, bookmarkedVerses = [] } = useUserData();
+  const { readingPage,studySaveError, bookmarkedVerses = [] } = useUserData();
   const { saveStudyProgress, toggleBookmark, pause } = usePlayerActions();
   const { isPlaying: mainIsPlaying } = usePlayback();
   useEffect(()=>{if(mainIsPlaying){audioRef.current?.pause();wordAudioRef.current?.pause();setIsPlayingAudio(false);setPlayingWordId(null);}},[mainIsPlaying]);
@@ -416,6 +416,7 @@ const Mushaf = () => {
 
   return (
     <div className="mushaf-page route-page">
+      {studySaveError&&<p className="collection-error" role="alert">{studySaveError}</p>}
       {/* Ultra-Sleek Single-Line Navigation Header */}
       <div className="mushaf-header glass-panel">
         {/* Left: View Mode Select Dropdown (NO EMOJIS) */}

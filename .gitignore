@@ -53,3 +53,7 @@ artifacts/
 .env.local
 *.pfx
 release-private.pem
+
+
+# This file contains only the public desktop Supabase client configuration.
+!.env.desktop

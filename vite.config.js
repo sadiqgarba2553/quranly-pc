@@ -1,8 +1,11 @@
-import { defineConfig } from 'vite';
+import { defineConfig,loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode }) => {
+  const env=loadEnv(mode,process.cwd(),'');
+  if(mode==='desktop'&&(!env.VITE_SUPABASE_URL||!env.VITE_SUPABASE_PUBLISHABLE_KEY))throw Error('Desktop Supabase public client configuration is missing.');
+  return ({
   base: mode === 'desktop' ? '/' : '/quranly/',
   define: mode === 'desktop' ? { 'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(''), 'import.meta.env.VITE_HADITH_API_KEY': JSON.stringify('') } : {},
   plugins: [react()],
@@ -31,4 +34,5 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-}));
+});
+});

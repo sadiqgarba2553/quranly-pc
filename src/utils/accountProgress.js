@@ -1,3 +1,4 @@
+import {persistStudyProgress} from './studyProgress.js';
 const fields = {
   playbackResume: 'quranly_playback_resume', reciterAnalytics: 'quranly_site_reciter_analytics_v2',
   recentReciterIds: 'quranly_recent_reciter_ids',
@@ -18,6 +19,7 @@ export function progressSnapshot(state) {
 }
 export function persistProgress(data) {
   for (const [field,key] of Object.entries(fields)) if (data[field] !== undefined) localStorage.setItem(key,JSON.stringify(data[field]));
+  if(data.readingPage!==undefined&&data.memorizationProgress!==undefined)persistStudyProgress(localStorage,data);
 }
 export function switchAccountProgress(uid, current) {
   const nextOwner = uid || 'guest';

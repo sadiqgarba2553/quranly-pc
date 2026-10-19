@@ -1,10 +1,12 @@
-# Quranly 0.1.0 Alpha for Windows
+# Quranly 0.6.0 for Windows
 
 Quran reading, recitations, memorization, daily azkar and progress tracking. Every app feature is free. The original full-screen player UI and animated backgrounds are restored: Dark Veil, Liquid Ether, Prism and Acid Squares, plus Off. All background and accent choices are free and saved between sessions. The original blue-to-black app background is restored. Desktop navigation, seek and volume controls, offline downloads and keyboard controls remain available.
 
+0.6 adds reliable offline saves and repair, immediate playback checkpoints, and account-scoped reading/memorization checkpoints. See [release notes](RELEASE-NOTES.md) and [Windows signing](WINDOWS-SIGNING.md). Desktop builds include only the public Supabase project URL and publishable key from `.env.desktop`; private API keys remain outside source and packaged builds.
+
 ## Install
 
-Run `Quranly-Setup-0.1.0-alpha-x64.exe` and follow the current-user setup. The installer is unsigned. Saved audio and preferences remain in the Windows user profile.
+Run `Quranly-Setup-0.6.0-x64.exe` and follow the current-user setup. The installer is unsigned. Saved audio and preferences remain in the Windows user profile.
 
 ## Accounts and cloud progress
 
@@ -74,7 +76,7 @@ Cards, navigation, playback controls, chat and dialogs now share one liquid-glas
 
 Live authentication update (18 October 2026): email confirmation is disabled at the owner's request. New email/password accounts sign in immediately without an email link; existing users should choose Sign in. This server change requires no reinstall. Password reset still uses email and needs a production sender for reliable delivery. A temporary live account passed signup and password login checks and was removed afterward. The confirmation-link instructions above apply only if confirmation is enabled again.
 
-The source project is on the Desktop in `quranly pc`. Run `npm run dist:win` there to produce `release/Quranly-Setup-0.1.0-alpha-x64.exe`. A successful build automatically removes installers for older versions from `release`; source files and user data are retained. Installers for the same version are replaced in place.
+The source project is on the Desktop in `quranly pc`. Run `npm run dist:win` there to produce `release/Quranly-Setup-0.6.0-x64.exe`. A successful build automatically removes installers for older versions from `release`; source files and user data are retained. Installers for the same version are replaced in place.
 ## Automatic account backup and resume
 
 Signed-in accounts now back up favourites, followed reciters, playlists, verse bookmarks, reflections, daily goals, listening history, reciter play counts and listening analytics, recent reciters, reading page and memorization progress automatically to Supabase. Playback resume includes the surah, exact saved position, reciter/riwayah, queue, volume, speed, repeat and shuffle. Restored playback starts paused; press Play to continue.

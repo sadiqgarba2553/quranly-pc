@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { DownloadCloud, Trash2, Play, HardDrive, AlertCircle } from 'lucide-react';
-import { getDownloadedTracks } from '../services/offlineCache';
+import { getDownloadedTracks,verifyOfflineLibrary,downloadAudioTrack } from '../services/offlineCache';
 import { usePlayerActions, useData, useUserData } from '../context/PlayerContext';
 import CollectionDownload, {useCollections,collectionTracks,formatDownloadBytes} from '../components/CollectionDownload';
 import './Downloads.css';
@@ -13,6 +13,9 @@ const formatBytes = (bytes) => {
 };
 
 const Downloads = () => {
+  const [missing,setMissing]=useState([]),[checking,setChecking]=useState(false),[repairing,setRepairing]=useState(null);
+  const repairTask=useRef(null);
+  useEffect(()=>()=>repairTask.current?.abort(),[]);
   const [cachedTracks, setCachedTracks] = useState(getDownloadedTracks);
   const {jobs,error:queueError}=useCollections();
   const {reciters=[],surahs=[]}=useData();
@@ -33,10 +36,16 @@ const Downloads = () => {
   };
   const queueAction=async(action,id)=>{setActionError('');try{await window.quranlyDesktop.collections[action](id);}catch(e){setActionError(e.message);}};
 
+  const checkFiles=async()=>{setChecking(true);setActionError('');try{const result=await verifyOfflineLibrary();setMissing(result.missing);setCachedTracks(result.tracks);}catch(error){setActionError(error.message);}finally{setChecking(false);}};
+  const repairTrack=async track=>{
+    const task=new AbortController();repairTask.current=task;setRepairing(track.id);setActionError('');
+    try{await downloadAudioTrack(track.audioUrl,{id:track.surahId,nameEnglish:track.surahName,nameArabic:track.surahArabic},{id:track.reciterId,name:track.reciterName},null,task.signal);loadTracks();setMissing(ids=>ids.filter(id=>id!==track.id));}
+    catch(error){setActionError(task.signal.aborted?'Download cancelled.':error.message);}
+    finally{repairTask.current=null;setRepairing(null);}
+  };
   const handleDelete = async (surahId, reciterId) => {
     if (window.confirm('Are you sure you want to delete this track?')) {
-      await removeTrack(surahId, reciterId);
-      loadTracks();
+      try{setActionError('');await removeTrack(surahId,reciterId);loadTracks();}catch(error){setActionError(error.message);}
     }
   };
 
@@ -70,6 +79,7 @@ const Downloads = () => {
         </article>;})}
       </section>}
 
+      <div className="offline-library-check"><button className="collection-buttons" onClick={checkFiles} disabled={checking}>{checking?'Checking saved audio...':'Check offline files'}</button>{missing.length>0&&<p role="status">{missing.length} saved {missing.length===1?'track is':'tracks are'} missing. Download them again to listen offline.</p>}</div>
       <div className="storage-info">
         <div className="storage-info-left">
           <span className="storage-label">Total Storage Used</span>
@@ -95,7 +105,9 @@ const Downloads = () => {
                 <span className="download-subtitle">{track.reciterName} • {formatBytes(track.sizeBytes)}{track.collectionId?` · ${track.quality==='original'?'Original':`${track.quality} kbps`}`:''}</span>
               </div>
               <div className="download-actions">
-                <button className="download-play-btn" aria-label={`Play ${track.surahName}`} onClick={() => handlePlay(track)}>
+                {missing.includes(track.id)&&<button onClick={()=>repairTrack(track)} disabled={Boolean(repairing)}>{repairing===track.id?'Downloading...':'Download again'}</button>}
+                {repairing===track.id&&<button onClick={()=>repairTask.current?.abort()}>Cancel</button>}
+                <button className="download-play-btn" aria-label={`Play ${track.surahName}`} onClick={() => handlePlay(track)} disabled={missing.includes(track.id)}>
                   <Play size={16} fill="currentColor" />
                 </button>
                 {!track.collectionId&&<button className="download-delete-btn" aria-label={`Delete ${track.surahName}`} onClick={() => handleDelete(track.surahId, track.reciterId)}>

@@ -1,5 +1,15 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
+test('reading checkpoints remain coherent after interrupted compatibility writes and stay account scoped',async()=>{
+  const {persistStudyProgress,readStudyProgress}=await import('../src/utils/studyProgress.js');
+  const values=new Map(),storage={getItem:key=>values.get(key)||null,setItem:(key,value)=>{if(key==='quranly_memorization_progress')throw Error('Storage full');values.set(key,value);}};
+  const data={readingPage:42,memorizationProgress:{1:{reviewedVerses:[1,2]}}};persistStudyProgress(storage,data);
+  assert.deepEqual(readStudyProgress(storage),data);
+  values.set('quranly_data_owner','another-account');values.set('quranly_mushaf_page','3');assert.equal(readStudyProgress(storage).readingPage,3);
+  values.set('quranly_data_owner','guest');assert.deepEqual(readStudyProgress(storage),data);
+  const old=storage.setItem;storage.setItem=(key,value)=>{if(key.startsWith('quranly_study_checkpoint_'))throw Error('Storage full');old(key,value);};
+  assert.throws(()=>persistStudyProgress(storage,{...data,readingPage:43}),/Storage full/);assert.deepEqual(readStudyProgress(storage),data);
+});
 test('local dates and streaks respect the user day across UTC midnight',async()=>{
   const previous=process.env.TZ;process.env.TZ='Africa/Lagos';
   try {

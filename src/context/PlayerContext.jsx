@@ -1,3 +1,5 @@
+import {readStudyProgress,persistStudyProgress} from '../utils/studyProgress';
+import {savePlaybackCheckpoint} from '../utils/playbackCheckpoint';
 import { localDateKey, clampGoal } from '../utils/dates';
 import { emptyProgress, persistProgress } from '../utils/accountProgress';
 /* eslint-disable react-refresh/only-export-components */
@@ -111,6 +113,7 @@ const savedLastTrack = (rawSavedTrack?.track?.surah?.id && rawSavedTrack?.track?
 // It prevents 32 components from re-rendering every 500ms during playback.
 const savedInitialTime = savedLastTrack ? savedLastTrack.currentTime : 0;
 
+const initialStudyProgress=readStudyProgress(localStorage);
 const initialState = {
   // Playback State
   queue: [],
@@ -130,8 +133,8 @@ const initialState = {
   downloadingTrackId: null,
   downloadProgress: 0,
 
-  readingPage: Math.max(1,Math.min(604,Number(localStorage.getItem('quranly_mushaf_page')) || 1)),
-  memorizationProgress: loadSavedJson('quranly_memorization_progress', {}),
+  readingPage:initialStudyProgress.readingPage,
+  memorizationProgress:initialStudyProgress.memorizationProgress,studySaveError:'',
   themeMode: localStorage.getItem('quranly_theme') || 'dark', // 'dark' (default) | 'light' | 'system'
   appTheme: localStorage.getItem('quranly_app_theme') || 'white', // 'white' | 'indigo' | 'amethyst' | 'ocean' | 'emerald' | 'sunset'
   playerNatureTheme: localStorage.getItem('quranly_player_nature_theme') || 'darkveil', // 'darkveil' | 'liquidether' | 'prism' | 'acid' | 'none'
@@ -550,7 +553,7 @@ function playerReducer(state, action) {
     case 'SAVE_STUDY_PROGRESS': {
       const patch = action.payload;
       const next = { ...state, readingPage: patch.readingPage === undefined ? state.readingPage : Math.max(1,Math.min(604,Number(patch.readingPage)||1)), memorizationProgress: patch.memorizationProgress || state.memorizationProgress };
-      try { localStorage.setItem('quranly_mushaf_page',String(next.readingPage)); localStorage.setItem('quranly_memorization_progress',JSON.stringify(next.memorizationProgress)); } catch {}
+      try{persistStudyProgress(localStorage,next);next.studySaveError='';}catch{next.studySaveError='Reading progress could not be saved on this device. Export a progress backup in Settings before closing Quranly.';}
       return next;
     }
     case 'RENAME_PLAYLIST': {
@@ -929,27 +932,16 @@ export function PlayerProvider({ children }) {
     localStorage.setItem('quranly_daily_goal', JSON.stringify(state.dailyGoalMinutes));
   }, [state.dailyGoalMinutes]);
 
-  // ── Save Last Played Track (Throttled Resume State) ──────
-  // Save every 5 seconds based on an interval, reading timeStore.peek()
-  // instead of depending on state.currentTime.
+  // Flush when playback pauses or the window closes, including the last few seconds.
   useEffect(() => {
-    const saveInterval = setInterval(() => {
-      try {
-        localStorage.setItem('quranly_last_track', JSON.stringify({
-          track: state.currentTrack,
-          currentTime: timeStore.peek()
-        }));
-      } catch { }
-    }, 5000);
-    // Also save immediately on track change
-    try {
-      localStorage.setItem('quranly_last_track', JSON.stringify({
-        track: state.currentTrack,
-        currentTime: timeStore.peek()
-      }));
-    } catch { }
-    return () => clearInterval(saveInterval);
-  }, [state.currentTrack]); // eslint-disable-line react-hooks/exhaustive-deps
+    const save=()=>savePlaybackCheckpoint(localStorage,state.currentTrack,timeStore.peek());
+    const hide=()=>{if(document.visibilityState==='hidden')save();};
+    const interval=setInterval(save,5000);save();
+    audio.addEventListener('pause',save);
+    window.addEventListener('pagehide',save);window.addEventListener('beforeunload',save);
+    document.addEventListener('visibilitychange',hide);
+    return ()=>{clearInterval(interval);audio.removeEventListener('pause',save);window.removeEventListener('pagehide',save);window.removeEventListener('beforeunload',save);document.removeEventListener('visibilitychange',hide);};
+  },[state.currentTrack,audio,timeStore]);
 
   // ── Background sound ──────────────────────────────────────
   useEffect(() => {
@@ -1256,7 +1248,7 @@ export function PlayerProvider({ children }) {
       return { ok: true };
     } catch (e) {
       console.error('Download failed:', e);
-      return { ok: false, error: controller.signal.aborted ? 'Download cancelled.' : 'Download failed. Check your connection and try again.' };
+      return { ok: false, error: controller.signal.aborted ? 'Download cancelled.' : e.name==='QuotaExceededError'?'There is not enough storage to save this track. Remove an older download and retry.':e.message||'Download failed. Check your connection and try again.' };
     } finally {
       dispatch({ type: 'SET_DOWNLOADING', payload: { trackId: null, progress: 0 } });
       downloadAbortRef.current = null;
@@ -1404,7 +1396,7 @@ export function PlayerProvider({ children }) {
     groupKhatms: state.groupKhatms,
     listeningHistory: state.listeningHistory,
     dailyGoalMinutes: state.dailyGoalMinutes,
-    readingPage: state.readingPage,
+    readingPage: state.readingPage,studySaveError:state.studySaveError,
     memorizationProgress: state.memorizationProgress,
     recentReciterIds: state.recentReciterIds,
     completedAzkarCount: state.completedAzkarCount,
@@ -1419,7 +1411,7 @@ export function PlayerProvider({ children }) {
     state.currentUser, state.isCloudLoaded, cloudBackupStatus,
     state.favouriteSurahIds, state.favouriteReciterIds, state.bookmarkedVerses,
     state.customPlaylists, state.verseReflections, state.groupKhatms,
-    state.readingPage, state.memorizationProgress,
+    state.readingPage, state.memorizationProgress,state.studySaveError,
     state.listeningHistory, state.dailyGoalMinutes, state.recentReciterIds,
     state.completedAzkarCount, state.dailyAzkarGoal,
     state.downloadedTracks, state.downloadingTrackId, state.downloadProgress,

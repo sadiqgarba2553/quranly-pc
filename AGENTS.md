@@ -63,3 +63,10 @@ When writing or refactoring UI components, verify against:
 3. Is `scale(0)` avoided in favor of `scale(0.95)` + `opacity`?
 4. Are UI animation durations kept under `300ms` with `--ease-out`?
 5. Does the design preserve the user's requested uniform liquid-glass surfaces, original accent colours, blue-to-black app background and selectable animated full-screen player backgrounds? Keep text readable, with reduced-transparency and reduced-motion fallbacks.
+
+
+# Repository ownership
+
+This app belongs to `sadiqgarba2553/quranly-pc`. Commit source and publish releases only to this repository. Never publish app code, installers, release assets or app tags to `bluecloud-website`. The website is separate.
+
+Keep builds, dependencies and private signing material out of source control. Preserve existing Windows app identifiers, user profiles and downloaded content.

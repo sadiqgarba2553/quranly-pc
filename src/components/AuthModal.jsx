@@ -71,6 +71,6 @@ export default function AuthModal({isOpen,onClose}) {
     </form>
     {mode==='verify' && <form className="account-form" onSubmit={event=>{event.preventDefault();run(async()=>{await resendConfirmation(email.trim());setMessage('If this account needs confirmation, a new email has been sent. Check your inbox and spam folder.');});}}><label htmlFor="resend-email">Email address</label><input id="resend-email" type="email" autoComplete="email" value={email} onChange={event=>setEmail(event.target.value)} required/><button className="account-secondary" disabled={busy}>Resend confirmation email</button></form>}
     <div className="account-links">{mode==='signin' ? <><button onClick={()=>changeMode('signup')}>Create an account</button><button onClick={()=>changeMode('forgot')}>Forgot password?</button><button onClick={()=>changeMode('verify')}>Confirm an email link</button></> : <button onClick={()=>changeMode('signin')}>Back to sign in</button>}</div></>}
-    <p className="account-footnote">Quranly 0.1.0 Alpha · All features are free</p>
+    <p className="account-footnote">Quranly 0.5.0 · All features are free</p>
   </section></div>;
 }

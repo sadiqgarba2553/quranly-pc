@@ -30,6 +30,6 @@ const os = require('node:os');
     await page.getByRole('button',{name:'Source search',exact:true}).waitFor({state:'visible'});
     await page.getByLabel('Your question',{exact:true}).waitFor({state:'visible'});
     await page.screenshot({path:'test-results/packaged-ai-updated.png'});
-    console.log('Packaged Quranly 0.1.0 Alpha opened successfully; isolated profile and renderer verified.');
+    console.log(`Packaged Quranly ${require('../package.json').version} opened successfully; isolated profile and renderer verified.`);
   } finally { await app.close(); await fs.rm(profile,{recursive:true,force:true}); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
